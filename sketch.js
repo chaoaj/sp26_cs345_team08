@@ -1,4 +1,6 @@
 const path = []
+let gold = 0; //default 0 for now
+
 function createPath(){
   path.push(createVector(-10, 200));
   path.push(createVector(50, 200));
@@ -7,6 +9,10 @@ function createPath(){
   path.push(createVector(400, 100));
   path.push(createVector(400, 300));
   path.push(createVector(500, 300));
+}
+
+function addGold(amount) {
+  gold += amount;
 }
 
 function setup() {
@@ -31,4 +37,11 @@ function draw() {
   //-----------------------------
   enemy.updatePos()
   enemy.render()
+
+  //draw gold display text to screen
+  fill('#efbf04');
+  textSize(22);
+  stroke(0);
+  strokeWeight(3);
+  text('Gold: ' + gold, 500, 30);
 }
