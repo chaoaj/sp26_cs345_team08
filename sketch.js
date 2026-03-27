@@ -37,7 +37,7 @@ function placeTower(x, y, attackRange = 100, cooldown = 30, damage = 1) {
 }
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(1920, 1080);
   createPath();
   
   // Place initial test towers
