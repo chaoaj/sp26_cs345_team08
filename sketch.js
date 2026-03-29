@@ -96,9 +96,9 @@ function mousePressed() {
 
 function preload() {
   //test logo
-  castleAsset = loadImage("dev/assets/Castle.png");
-  logo = loadImage("dev/assets/Castle rush placeholder logo.png");
-  tower1Asset = loadImage("dev/assets/Castle Rush tower 1 placeholder.png")
+  castleAsset = loadImage("assets/Castle.png");
+  logo = loadImage("assets/Castle rush placeholder logo.png");
+  tower1Asset = loadImage("assets/Castle Rush tower 1 placeholder.png")
 }
 
 function setup() {
