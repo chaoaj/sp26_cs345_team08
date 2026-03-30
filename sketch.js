@@ -201,11 +201,11 @@ function draw() {
     circle(mouseX, mouseY, 20);
   }
   
-  // Draw castle at end of path (500, 300)
+  // Draw castle at end of path (1250, 680)
   fill('#8B4513');
   stroke(0);
   strokeWeight(2);
-  rect(1250, 680, 40, 40); // centered around (500, 300)
+  rect(1250, 680, 40, 40); // centered around (1250, 680)
   image(castleAsset, 1250, 680, 40, 40); 
 
 
