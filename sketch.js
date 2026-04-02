@@ -208,7 +208,20 @@ function draw() {
   rect(1250, 680, 40, 40); // centered around (1250, 680)
   image(castleAsset, 1250, 680, 40, 40); 
 
+  for (let button of towerButtons) {
 
+    // draw button image
+    image(tower1Asset, button.x, button.y, button.w, button.h);
+
+    // draw outline if selected
+    if (selectedBuyButton === button.type) {
+      noFill();
+      stroke(255,255,0);
+      strokeWeight(4);
+      rect(button.x, button.y, button.w, button.h);
+    }
+
+  }
 
 
 }
