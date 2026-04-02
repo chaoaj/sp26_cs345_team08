@@ -192,6 +192,12 @@ function draw() {
     text("Tower Info", 1035, 330);
     text("Damage: " + selectedTower.damage, 1035, 360);
     text("Range: " + selectedTower.attackRange, 1035, 390);
+
+    //outlines the selected tower
+    noFill();
+    stroke(255,255,0);
+    strokeWeight(2);
+    circle(selectedTower.x, selectedTower.y, 24);
   }
 
   //placing new tower 
