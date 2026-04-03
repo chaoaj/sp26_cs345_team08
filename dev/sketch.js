@@ -16,6 +16,12 @@ let draggingTowerType = null;
 let towerButtons = [
   { type: 1, x: 1375, y: 150, w: 100, h: 100 },
 ];
+
+//Trash Can Button
+let trashButton = [
+  {x: 1375, y: 600, w: 100, h:100}
+]
+
 //level object: in charge of starting new rounds and populating enemy array
 let level;
 
@@ -69,6 +75,14 @@ function mousePressed() {
 
   //places tower if dragging
   if (draggingTowerType !== null) {
+    if(dist(mouseX, mouseY, trashButton[0].x + 50,trashButton[0].y + 50) < 50) {
+      console.log("Trashed tower!")
+      draggingTowerType = null;
+      selectedBuyButton = null;
+
+      // Give Back Gold
+      return;
+    }
     if (draggingTowerType === 1){ //will need to add more when adding more towers
       placeTower(mouseX, mouseY, 100, 30, 1);
     }
@@ -95,6 +109,7 @@ function preload() {
   castleAsset = loadImage("assets/Castle.png");
   logo = loadImage("assets/Castle rush placeholder logo.png");
   tower1Asset = loadImage("assets/Castle Rush tower 1 placeholder.png")
+  trash = loadImage("assets/trash-export.png")
 }
 
 function setup() {
@@ -190,6 +205,13 @@ function draw() {
     text("Tower Info", 1035, 330);
     text("Damage: " + selectedTower.damage, 1035, 360);
     text("Range: " + selectedTower.attackRange, 1035, 390);
+
+    //outlines the selected tower
+    noFill();
+    stroke(255,255,0);
+    strokeWeight(2);
+    circle(selectedTower.x, selectedTower.y, 24);
+    
   }
 
   //placing new tower 
@@ -197,6 +219,12 @@ function draw() {
     fill(0, 150);
     noStroke();
     circle(mouseX, mouseY, 20);
+
+    // Trash Can Appears when a Tower is Selected
+    fill(255);
+    noStroke();
+    rect(1375, 600, 100, 100);
+    image(trash, 1386, 600, 79, 100);
   }
   
   // Draw castle at end of path (500, 300)
@@ -206,4 +234,16 @@ function draw() {
   rect(1250, 680, 40, 40); // centered around (500, 300)
   image(castleAsset, 1250, 680, 40, 40); 
 
+  for (let button of towerButtons) {
+    // draw button image
+    image(tower1Asset, button.x, button.y, button.w, button.h);
+
+    // draw outline if selected
+    if (selectedBuyButton === button.type) {
+      noFill();
+      stroke(255,255,0);
+      strokeWeight(4);
+      rect(button.x, button.y, button.w, button.h);
+    }
   }
+}
