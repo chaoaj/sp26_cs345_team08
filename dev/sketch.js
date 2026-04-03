@@ -2,8 +2,6 @@ const path = []
 let gold = 0; //default 0 for now
 let enemies = [];
 let towers = [];
-let waveTimer = 0;
-let waveCounter = 0;  
 let logo;
 let tower1Asset;
 //castle health
@@ -18,6 +16,8 @@ let draggingTowerType = null;
 let towerButtons = [
   { type: 1, x: 1375, y: 150, w: 100, h: 100 },
 ];
+//level object: in charge of starting new rounds and populating enemy array
+let level;
 
 function createPath() {
   path.push(createVector(-10, 100));
@@ -33,10 +33,6 @@ function createPath() {
 
 function addGold(amount) {
   gold += amount;
-}
-
-function spawnEnemy(health = 4, damage = 1, speed = 2) {
-  enemies.push(new Enemy(health, damage, speed, path));
 }
 
 function placeTower(x, y, attackRange = 100, cooldown = 30, damage = 1) {
@@ -104,6 +100,7 @@ function preload() {
 function setup() {
   createCanvas(1535, 825);
   createPath();
+  level = new Levels(path)
   
   // Place initial test towers
   /*
@@ -128,35 +125,35 @@ function draw() {
   endShape();
   strokeWeight(1);
 
-  // Spawn waves of enemies periodically
-  waveTimer++;
-  if (waveTimer > 60) { // Spawn new wave every 60 frames
-    spawnEnemy(4, 1, 1.5);
-    waveTimer = 0;
-    waveCounter++;
+
+  //loads new wave into array at the beginning of each level
+  if (!level.levelActive) {
+    level.startWave();
   }
 
-  // Update and render enemies
+  // hadnles spawning of enemies 
+  level.update(enemies);
+
+  //rerender enemies in new positions
   for (let i = enemies.length - 1; i >= 0; i--) {
     let enemy = enemies[i];
-    
-    // Update position
+
     enemy.updatePos();
-    
-    // Remove if dead or past end of path
+
     if (enemy.health <= 0 || enemy.targetPos >= path.length) {
       if (enemy.health <= 0) {
-        addGold(1); // Reward for killing enemy
+        addGold(1);
       } else {
-        castleHealth--; // Enemy reached the castle, the castle is losing health
+        castleHealth--;
       }
       enemies.splice(i, 1);
       continue;
     }
-    
-    // Render enemy
     enemy.render();
   }
+
+
+
 
   // Update and render towers
   for (let tower of towers) {
@@ -170,6 +167,7 @@ function draw() {
   stroke(0);
   strokeWeight(3);
   text('Gold: ' + gold, 1100, 30);
+  text('Level: ' + level.currentLevel, 1100,150)
   text('Enemies: ' + enemies.length, 1100, 60);
   text('Towers: ' + towers.length, 1100, 90);
   text('Castle HP: ' + castleHealth, 1100, 120); // Castle health in top left (add after gold/enemies/towers text)
@@ -208,9 +206,4 @@ function draw() {
   rect(1250, 680, 40, 40); // centered around (500, 300)
   image(castleAsset, 1250, 680, 40, 40); 
 
-
-
-
-}
-
-
+  }
