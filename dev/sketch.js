@@ -6,6 +6,8 @@ let logo;
 let tower1Asset;
 //castle health
 let castleAsset;
+let startLevel = false
+let autoStartLevel = false
 let castleHealth = 10;
 //for upgrading tower
 let selectedTower = null;
@@ -16,6 +18,7 @@ let draggingTowerType = null;
 let towerButtons = [
   { type: 1, x: 1375, y: 150, w: 100, h: 100 },
 ];
+let startLevelBttn
 
 //Trash Can Button
 let trashButton = [
@@ -104,6 +107,20 @@ function mousePressed() {
   }
 }
 
+function changeLevelStart(){
+	autoStartLevel = !autoStartLevel
+	if(!autoStartLevel){
+		autoStartBttn.html("manual rounds")
+	}
+	else{
+		autoStartBttn.html("auto rounds")
+	}
+}
+
+function startRound(){
+	startLevel = true
+}
+
 function preload() {
   //test logo
   castleAsset = loadImage("assets/Castle.png");
@@ -111,12 +128,17 @@ function preload() {
   tower1Asset = loadImage("assets/Castle Rush tower 1 placeholder.png")
   trash = loadImage("assets/trash-export.png")
 }
-
+let autoStartBttn
 function setup() {
   createCanvas(1535, 825);
   createPath();
   level = new Levels(path)
-  
+  autoStartBttn = createButton('manual rounds');
+  autoStartBttn.position(1350, 800);
+  autoStartBttn.mousePressed(changeLevelStart)
+  startLevelBttn = createButton('start round');
+  startLevelBttn.position(1150, 800);
+  startLevelBttn.mousePressed(startRound)
   // Place initial test towers
   /*
   placeTower(150, 100, 120, 30, 1);
@@ -127,7 +149,12 @@ function setup() {
 
 function draw() {
   background(220);
-
+  if(autoStartLevel){
+	startLevelBttn.hide()
+  }
+  else{
+	startLevelBttn.show()
+  }
 
   // Draw path visualization
   noFill();
@@ -142,12 +169,14 @@ function draw() {
 
 
   //loads new wave into array at the beginning of each level
-  if (!level.levelActive) {
+  if (!level.levelActive && (startLevel || autoStartLevel)) {
     level.startWave();
+	startLevel = false
   }
-
-  // hadnles spawning of enemies 
-  level.update(enemies);
+    // hadnles spawning of enemies 
+  if(level.levelActive){
+	level.update(enemies);
+  }
 
   //rerender enemies in new positions
   for (let i = enemies.length - 1; i >= 0; i--) {
