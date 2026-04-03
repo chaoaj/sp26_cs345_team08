@@ -246,4 +246,5 @@ function draw() {
       rect(button.x, button.y, button.w, button.h);
     }
   }
+  
 }
