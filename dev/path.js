@@ -21,3 +21,23 @@ function renderPath(path) {
   endShape();
   strokeWeight(1);
 }
+
+function isOnPath(x, y, path) {
+  const PATH_WIDTH = 20;
+
+  for (let i = 0; i < path.length - 1; i++) {
+    let a = path[i];
+    let b = path[i + 1];
+
+    let ab = p5.Vector.sub(b, a);
+    let ap = createVector(x - a.x, y - a.y);
+    let t = constrain(ap.dot(ab) / ab.magSq(), 0, 1);
+
+    let closest = p5.Vector.add(a, p5.Vector.mult(ab, t));
+
+    let d = dist(x, y, closest.x, closest.y);
+    if (d < PATH_WIDTH) return true;
+  }
+
+  return false;
+}

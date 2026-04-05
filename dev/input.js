@@ -51,7 +51,7 @@ function mousePressed() {
       return;
     }
 
-    if (Game.draggingTowerType === 1 && Game.gold >= 3) {
+    if (Game.draggingTowerType === 1 && Game.gold >= 3 && !isOnPath(mouseX, mouseY, Game.path) && !isOnSidebar(mouseX, mouseY)) {
       placeTower(mouseX, mouseY, 100, 30, 1);
       addGold(-3); // subtract for cost of tower if player has enough
     }
