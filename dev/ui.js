@@ -85,7 +85,11 @@ function renderSelectedTowerPanel() {
 function renderDraggingTowerPreview() {
   if (Game.draggingTowerType === null) return;
 
-  fill(0, 150);
+  if (isOnPath(mouseX, mouseY, Game.path) || isOnSidebar(mouseX, mouseY)) {
+    fill(255, 0, 0, 150); //red if on path
+  } else {
+    fill(0, 255, 0, 150); //green otherwise
+  }
   noStroke();
   circle(mouseX, mouseY, 20);
 
@@ -101,6 +105,10 @@ function renderCastle() {
   strokeWeight(2);
   rect(1250, 680, 40, 40);
   image(Game.assets.castle, 1250, 680, 40, 40);
+}
+
+function isOnSidebar(x, y) {
+  return x >= 1300 && x <= 1600 && y >= 0 && y <= 825;
 }
 
 function syncRoundButtons() {
