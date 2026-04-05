@@ -1,6 +1,6 @@
 window.Game = {
   path: [],
-  gold: 0,
+  gold: 5,
   enemies: [],
   towers: [],
   castleHealth: 10,
