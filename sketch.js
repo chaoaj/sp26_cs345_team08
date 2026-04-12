@@ -60,6 +60,7 @@ function draw() {
     renderDraggingTowerPreview();
     renderCastle();
     drawSettingsMenu();
+    renderSettingIconButton() 
 
     if (Game.castleHealth <= 0) {
       gameLost = true;

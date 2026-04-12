@@ -47,15 +47,8 @@ function renderRoundControls() {
   text(Game.autoStartLevel ? 'Switch to Manual' : 'Switch to Auto', mode.x + mode.w / 2, mode.y + mode.h / 2);
 
   textAlign(LEFT, BASELINE);
-
-  //setting button
-  const icon = Game.ui.settingIconButton;
-  fill(255);
-  stroke(0);
-  strokeWeight(2);
-  rect(icon.x, icon.y, icon.w, icon.h, 6);
-  image(Game.assets.settingIcon, icon.x, icon.y, icon.w, icon.h);
 }
+
 
 function renderTowerButtons() {
   for (let button of Game.ui.towerButtons) {
@@ -140,4 +133,14 @@ function isOnSidebar(x, y) {
 
 function syncRoundButtons() {
   // No-op: round controls are now rendered in-canvas.
+}
+
+function renderSettingIconButton() {
+  //setting button
+  const icon = Game.ui.settingIconButton;
+  fill(255);
+  stroke(0);
+  strokeWeight(2);
+  rect(icon.x, icon.y, icon.w, icon.h, 6);
+  image(Game.assets.settingIcon, icon.x, icon.y, icon.w, icon.h);
 }
