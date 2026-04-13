@@ -29,5 +29,3 @@ class WizardTower extends Tower {
     }
   }
 }
-
-we can stir
