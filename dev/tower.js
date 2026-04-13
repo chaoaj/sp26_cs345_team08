@@ -9,6 +9,7 @@ class Tower {
     this.maxCooldown = cooldown;
     this.damage = damage;
     this.currentCooldown = 0;
+    this.towerName = 'Tower 1';
 
     this.targetEnemy = null;
     this.projectiles = [];
