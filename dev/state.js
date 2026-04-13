@@ -11,7 +11,7 @@ window.Game = {
   autoStartLevel: false,
   assets: {
     logo: null,
-    tower1: null,
+    archerTower: null,
     castle: null,
     trash: null,
   },

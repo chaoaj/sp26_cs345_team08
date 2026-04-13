@@ -8,12 +8,12 @@ function canPlaceTowerAt(x, y) {
   return true;
 }
 
-function placeTower(x, y, attackRange = 100, cooldown = 30, damage = 1) {
+function placeTower(x, y, TowerClass = ArcherTower, ...towerArgs) {
   if (!canPlaceTowerAt(x, y)) {
     return false;
   }
 
-  Game.towers.push(new Tower(x, y, attackRange, cooldown, damage));
+  Game.towers.push(new TowerClass(x, y, ...towerArgs));
   return true;
 }
 

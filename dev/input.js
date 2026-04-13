@@ -63,7 +63,7 @@ function mousePressed() {
       let placed = false;
 
       if (Game.draggingTowerType === 1) {
-        placed = placeTower(mouseX, mouseY, config.range, config.cooldown, config.damage);
+          placed = placeTower(mouseX, mouseY, ArcherTower, config.range, config.cooldown, config.damage);
       }
 
       if (Game.draggingTowerType === 2) {

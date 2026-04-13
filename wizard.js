@@ -1,8 +1,7 @@
 class WizardTower extends Tower {
   constructor(x, y, attackRange = 120, cooldown = 55, damage = 1, splashRadius = 60) {
-    super(x, y, attackRange, cooldown, damage);
+    super(x, y, attackRange, cooldown, damage, 'Wizard Tower');
     this.splashRadius = splashRadius;
-    this.towerName = 'Wizard Tower';
   }
 
   attack(enemy) {

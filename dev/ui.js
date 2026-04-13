@@ -52,7 +52,7 @@ function renderRoundControls() {
 function renderTowerButtons() {
   const buttonInfo = {
     1: {
-      name: 'Tower 1',
+      name: 'Archer Tower',
       cost: 3,
       damage: 1,
       range: 100,
@@ -71,7 +71,7 @@ function renderTowerButtons() {
   };
 
   for (let button of Game.ui.towerButtons) {
-    image(Game.assets.tower1, button.x, button.y, button.w, button.h);
+    image(Game.assets.archerTower, button.x, button.y, button.w, button.h);
 
     if (button.type === 2) {
       fill(40, 90, 180, 180);
@@ -131,7 +131,7 @@ function renderSelectedTowerPanel() {
   noStroke();
   textSize(18);
   text('Tower Info', 1035, 330);
-  text('Type: ' + (Game.selectedTower.towerName || 'Tower 1'), 1035, 345);
+  text('Type: ' + (Game.selectedTower.towerName || 'Tower'), 1035, 345);
   text('Damage: ' + Game.selectedTower.damage, 1035, 360);
   text('Range: ' + Game.selectedTower.attackRange, 1035, 390);
   if (Game.selectedTower.splashRadius) {
