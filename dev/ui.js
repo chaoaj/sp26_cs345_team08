@@ -13,7 +13,7 @@ function renderHud() {
 function renderSidebar() {
   fill('#7c7c7c');
   rect(1300, 0, 300, 825);
-  image(Game.assets.logo, 1300, 0, 240, 100);
+  image(Game.assets.logo, 1310, 10, 220, 220);
 }
 
 function renderRoundControls() {
