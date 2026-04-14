@@ -206,3 +206,12 @@ function renderSettingIconButton() {
   rect(icon.x, icon.y, icon.w, icon.h, 6);
   image(Game.assets.settingIcon, icon.x, icon.y, icon.w, icon.h);
 }
+function renderSpeedUpButton() {
+  //setting button
+  const icon = Game.ui.speedUpButton;
+  fill(255);
+  stroke(0);
+  strokeWeight(2);
+  rect(icon.x, icon.y, icon.w, icon.h, 6);
+  image(Game.assets.twoxicon, icon.x, icon.y, icon.w, icon.h);
+}

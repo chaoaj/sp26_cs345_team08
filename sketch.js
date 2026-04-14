@@ -9,6 +9,7 @@ function preload() {
   Game.assets.startbutton = loadImage('assets/CastleRush Start Placeholder.png');
   Game.assets.settingbutton = loadImage('assets/CastleRush Settings Placeholder.png');
   Game.assets.settingIcon   = loadImage('assets/Setting_Icon.png');
+  Game.assets.twoxicon   = loadImage('assets/2x.png');
 }
 
 function setup() {
@@ -60,7 +61,8 @@ function draw() {
     renderDraggingTowerPreview();
     renderCastle();
     drawSettingsMenu();
-    renderSettingIconButton() 
+    renderSettingIconButton()
+	renderSpeedUpButton() 
 
     if (Game.castleHealth <= 0) {
       gameLost = true;

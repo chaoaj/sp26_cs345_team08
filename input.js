@@ -28,6 +28,28 @@ function setupRoundButtons() {
 }
 
 function mousePressed() {
+  if(Game.level.levelActive){
+	if(isInsideButton(mouseX, mouseY, Game.ui.speedUpButton) && Game.spedUp){
+		Game.spedUp = false;
+		for(let enemy of Game.level.waveEnemies){
+			enemy.slowDown()
+		}
+		for(let tower of Game.towers){
+			tower.slowDown()
+		}
+		Game.spawnDelayMultiplier = 1
+	}
+	else if(isInsideButton(mouseX, mouseY, Game.ui.speedUpButton)&&!Game.spedUp){
+		Game.spedUp = true;
+		for(let enemy of Game.level.waveEnemies){
+			enemy.speedUp()
+		}
+		for(let tower of Game.towers){
+			tower.speedUp()
+		}
+		Game.spawnDelayMultiplier = 5
+	}
+  }
   if (!gameStart) {
     // Open settings menu
     if (!settingsOpen &&
