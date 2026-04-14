@@ -1,11 +1,12 @@
 class OrbProjectile {
-  constructor(x, y, targetEnemy, damage, speed = 6) {
+  constructor(x, y, targetEnemy, damage, speed = 6, pos=targetEnemy.pos) {
     this.pos = createVector(x, y);
     this.targetEnemy = targetEnemy;
     this.damage = damage;
     this.speed = speed;
     this.radius = 6;
     this.active = true;
+	this.targetPos = pos
   }
 
   update() {
@@ -16,8 +17,8 @@ class OrbProjectile {
       return;
     }
 
-    const targetPos = this.targetEnemy.pos;
-    const toTarget = p5.Vector.sub(targetPos, this.pos);
+
+    const toTarget = p5.Vector.sub(this.targetPos, this.pos);
     const distanceToTarget = toTarget.mag();
 
     if (distanceToTarget <= this.speed + this.radius + 20) {
@@ -41,8 +42,8 @@ class OrbProjectile {
 }
 
 class SplashOrbProjectile extends OrbProjectile {
-  constructor(x, y, targetEnemy, damage, speed = 5, splashRadius = 60) {
-    super(x, y, targetEnemy, damage, speed);
+  constructor(x, y, targetEnemy, damage, speed = 5, splashRadius = 60,pos=targetEnemy.pos) {
+    super(x, y, targetEnemy, damage, speed,pos);
     this.splashRadius = splashRadius;
     this.radius = 7;
   }
@@ -55,12 +56,11 @@ class SplashOrbProjectile extends OrbProjectile {
       return;
     }
 
-    const targetPos = this.targetEnemy.pos;
-    const toTarget = p5.Vector.sub(targetPos, this.pos);
+    const toTarget = p5.Vector.sub(this.targetPos, this.pos);
     const distanceToTarget = toTarget.mag();
 
     if (distanceToTarget <= this.speed + this.radius + 20) {
-      this.dealSplashDamage(targetPos);
+      this.dealSplashDamage(this.targetPos);
       this.active = false;
       return;
     }

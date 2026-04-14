@@ -5,6 +5,7 @@ function isInsideButton(x, y, button) {
 const towerConfigs = {
   1: { cost: 3, range: 100, cooldown: 30, damage: 1 },
   2: { cost: 5, range: 120, cooldown: 55, damage: 1, splashRadius: 60 },
+  3: { cost: 1, range: 50, cooldown: 70, damage: 2, splashRadius: 50 },
 };
 
 function onToggleAutoStart() {
@@ -92,6 +93,9 @@ function mousePressed() {
 
       if (Game.draggingTowerType === 2) {
         placed = placeWizardTower(mouseX, mouseY, config.range, config.cooldown, config.damage, config.splashRadius);
+      }
+	  if (Game.draggingTowerType === 3) {
+        placed = placeStoicKnight(mouseX, mouseY, config.range, config.cooldown, config.damage, config.splashRadius);
       }
 
       if (placed) {

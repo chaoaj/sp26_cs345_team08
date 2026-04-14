@@ -69,6 +69,15 @@ function renderTowerButtons() {
       attackType: 'AoE Splash',
       aoe: 60,
     },
+    3: {
+      name: 'Stoic Knight',
+      cost: 5,
+      damage: 1,
+      range: 100,
+      cooldown: 55,
+      attackType: 'AoE Splash',
+      aoe: 100,
+    },
   };
 
   for (let button of Game.ui.towerButtons) {
@@ -83,6 +92,16 @@ function renderTowerButtons() {
       textSize(18);
       textAlign(CENTER, CENTER);
       text('WIZ', button.x + button.w / 2, button.y + button.h / 2);
+    }
+    if (button.type === 3) {
+      fill(40, 90, 180, 180);
+      noStroke();
+      rect(button.x, button.y, button.w, button.h);
+
+      fill(255);
+      textSize(18);
+      textAlign(CENTER, CENTER);
+      text('Knight', button.x + button.w / 2, button.y + button.h / 2);
     }
 
     if (Game.selectedBuyButton === button.type) {
