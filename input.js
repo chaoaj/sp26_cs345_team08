@@ -50,6 +50,17 @@ function mousePressed() {
 		Game.spawnDelayMultiplier = 5
 	}
   }
+
+  //sell tower
+  if (isInsideButton(mouseX, mouseY, Game.ui.trashButton) && Game.selectedTower !== null){
+    let index = Game.towers.indexOf(Game.selectedTower);
+    if (index !== -1) {
+      Game.gold += 3;
+      Game.towers.splice(index, 1);
+      
+    }
+    Game.selectedTower = null;
+  }
   if (!gameStart) {
     // Open settings menu
     if (!settingsOpen &&
