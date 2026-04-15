@@ -28,7 +28,9 @@ function placeWizardTower(x, y, attackRange = 120, cooldown = 55, damage = 1, sp
 
 function updateAndRenderTowers() {
   for (let tower of Game.towers) {
-    tower.update(Game.enemies);
+    if (!settingsOpen) {
+      tower.update(Game.enemies);
+    }
     tower.render();
   }
 }

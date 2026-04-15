@@ -68,6 +68,15 @@ function renderTowerButtons() {
       attackType: 'AoE Splash',
       aoe: 60,
     },
+    3: {
+      name: 'Stoic Knight',
+      cost: 5,
+      damage: 1,
+      range: 100,
+      cooldown: 55,
+      attackType: 'AoE Splash',
+      aoe: 100,
+    },
   };
 
   for (let button of Game.ui.towerButtons) {
@@ -77,11 +86,19 @@ function renderTowerButtons() {
       fill(40, 90, 180, 180);
       noStroke();
       rect(button.x, button.y, button.w, button.h);
-
       fill(255);
       textSize(18);
       textAlign(CENTER, CENTER);
       text('WIZ', button.x + button.w / 2, button.y + button.h / 2);
+    }
+    if (button.type === 3) {
+      fill(40, 90, 180, 180);
+      noStroke();
+      rect(button.x, button.y, button.w, button.h);
+      fill(255);
+      textSize(18);
+      textAlign(CENTER, CENTER);
+      text('Knight', button.x + button.w / 2, button.y + button.h / 2);
     }
 
     if (Game.selectedBuyButton === button.type) {
@@ -175,4 +192,22 @@ function isOnSidebar(x, y) {
 
 function syncRoundButtons() {
   // No-op: round controls are now rendered in-canvas.
+}
+
+function renderSettingIconButton() {
+  const icon = Game.ui.settingIconButton;
+  fill(255);
+  stroke(0);
+  strokeWeight(2);
+  rect(icon.x, icon.y, icon.w, icon.h, 6);
+  image(Game.assets.settingIcon, icon.x, icon.y, icon.w, icon.h);
+}
+
+function renderSpeedUpButton() {
+  const icon = Game.ui.speedUpButton;
+  fill(255);
+  stroke(0);
+  strokeWeight(2);
+  rect(icon.x, icon.y, icon.w, icon.h, 6);
+  image(Game.assets.twoxicon, icon.x, icon.y, icon.w, icon.h);
 }

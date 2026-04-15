@@ -132,3 +132,11 @@ function mousePressed() {
 
   Game.selectedTower = pickTowerAt(mouseX, mouseY);
 }
+
+function mouseDragged() {
+  handleSettingsDrag();
+}
+
+function mouseReleased() {
+  handleSettingsRelease();
+}
