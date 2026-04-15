@@ -16,12 +16,8 @@ function preload() {
 
 function setup() {
   createCanvas(1535, 825);
-  // if (gameStart == true) {
-  //   createPath(Game.path);
-  //   Game.level = new Levels(Game.path);
-  //   setupRoundButtons();
-  // }
-    
+  userStartAudio();  // unlock audio for browser autoplay policy
+  applyVolume();     // apply Game.volume (0.5) immediately at startup
 }
 
 function draw() {
