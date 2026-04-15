@@ -26,6 +26,15 @@ function placeWizardTower(x, y, attackRange = 120, cooldown = 55, damage = 1, sp
   return true;
 }
 
+function placeStoicKnight(x, y, attackRange = 500, cooldown = 55, damage = 1, splashRadius = 60) {
+  if (!canPlaceTowerAt(x, y)) {
+    return false;
+  }
+
+  Game.towers.push(new StoicKnight(x, y, attackRange, cooldown, damage, splashRadius));
+  return true;
+}
+
 function updateAndRenderTowers() {
   for (let tower of Game.towers) {
     if (!settingsOpen) {
