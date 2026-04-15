@@ -66,6 +66,8 @@ function mousePressed() {
     handleSettingsClick();
     return;
   }
+
+  if (isInsideButton(mouseX, mouseY, Game.ui.modeToggleButton)) {
     onToggleAutoStart();
     return;
   }
