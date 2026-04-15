@@ -13,6 +13,17 @@ class Tower {
 
     this.targetEnemy = null;
     this.projectiles = [];
+    this.spedUp = false;
+  }
+
+  speedUp() {
+    this.maxCooldown /= 5;
+    this.spedUp = true;
+  }
+
+  slowDown() {
+    this.spedUp = false;
+    this.maxCooldown *= 5;
   }
 
   findTarget(enemies) {
@@ -50,7 +61,8 @@ class Tower {
   }
 
   attack(enemy) {
-    this.projectiles.push(new OrbProjectile(this.x, this.y, enemy, this.damage));
+    let speed = this.spedUp ? 5 : 1;
+    this.projectiles.push(new OrbProjectile(this.x, this.y, enemy, this.damage, 6 * speed));
   }
 
   render() {

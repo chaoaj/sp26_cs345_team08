@@ -10,16 +10,14 @@ function preload() {
   Game.assets.settingbutton = loadImage('assets/CastleRush Settings Placeholder.png');
   Game.assets.settingIcon   = loadImage('assets/Setting_Icon.png');
   Game.assets.twoxicon   = loadImage('assets/2x.png');
+  Game.assets.volumeIcon    = loadImage('assets/Volume.png');
+  Game.assets.muteIcon      = loadImage('assets/Muted.png');
 }
 
 function setup() {
   createCanvas(1535, 825);
-  // if (gameStart == true) {
-  //   createPath(Game.path);
-  //   Game.level = new Levels(Game.path);
-  //   setupRoundButtons();
-  // }
-    
+  userStartAudio();  // unlock audio for browser autoplay policy
+  applyVolume();     // apply Game.volume (0.5) immediately at startup
 }
 
 function draw() {
