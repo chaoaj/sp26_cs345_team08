@@ -28,8 +28,8 @@ function setupRoundButtons() {
 }
 
 function mousePressed() {
-  if(Game.level.levelActive){
-	if(isInsideButton(mouseX, mouseY, Game.ui.speedUpButton) && Game.spedUp){
+  if(Game.level && Game.level.levelActive){
+	  if(isInsideButton(mouseX, mouseY, Game.ui.speedUpButton) && Game.spedUp){
 		Game.spedUp = false;
 		for(let enemy of Game.level.waveEnemies){
 			enemy.slowDown()
