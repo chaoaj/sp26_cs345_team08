@@ -12,6 +12,7 @@ function preload() {
   Game.assets.twoxicon   = loadImage('assets/2x.png');
   Game.assets.volumeIcon    = loadImage('assets/Volume.png');
   Game.assets.muteIcon      = loadImage('assets/Muted.png');
+  Game.assets.hiteffect     = new Audio('assets/hiteffectupd.mp3');
 }
 
 function setup() {
