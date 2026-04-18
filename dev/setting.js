@@ -142,7 +142,7 @@ function updateVolumeFromMouse() {
 }
 
 function applyVolume() {
-  if (typeof masterVolume === 'function') {
-    masterVolume(Game.isMuted ? 0 : Game.volume);
+  if (typeof outputVolume === 'function') {
+    outputVolume(Game.isMuted ? 0 : Game.volume);
   }
 }
