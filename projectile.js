@@ -23,7 +23,7 @@ class OrbProjectile {
 
     if (distanceToTarget <= this.speed + this.radius + 20) {
       this.targetEnemy.health -= this.damage;
-      Game.assets.hiteffect.cloneNode().play();
+      Game.assets.hiteffect.play();
       this.active = false;
       return;
     }
