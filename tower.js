@@ -17,10 +17,12 @@ class Tower {
   }
 
   speedUp(){
+	console.log("speeding up")
 	this.maxCooldown /= 5
 	this.spedUp = true;
   }
   slowDown(){
+	console.log("slowing down")
 	this.spedUp = false;
 	this.maxCooldown *= 5;
   }
