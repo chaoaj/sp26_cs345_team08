@@ -16,21 +16,29 @@ class Enemy {
     this.speed = this.speed / 5;
   }
 
-  updatePos() {
-    if (this.targetPos >= this.path.length) return;
+ updatePos() {
+  if (this.targetPos >= this.path.length) return;
 
-    let target = this.path[this.targetPos];
-    let direction = p5.Vector.sub(target, this.pos);
+  let target = this.path[this.targetPos];
+  let direction = p5.Vector.sub(target, this.pos);
+  let dist = direction.mag();
 
-    if (direction.mag() <= 3) {
-      this.pos = target.copy();
-      this.targetPos++;
-      return;
+  if (dist <= this.speed) {
+    this.pos = target.copy();
+    this.targetPos++;
+
+    let leftover = this.speed - dist;
+    if (this.targetPos < this.path.length && leftover > 0) {
+      let nextDir = p5.Vector.sub(this.path[this.targetPos], this.pos);
+      nextDir.setMag(leftover);
+      this.pos.add(nextDir);
     }
-
-    direction.setMag(this.speed);
-    this.pos.add(direction);
+    return;
   }
+
+  direction.setMag(this.speed);
+  this.pos.add(direction);
+}
 
   render() {
     fill(255, 0, 0);
