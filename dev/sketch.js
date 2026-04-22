@@ -2,11 +2,14 @@ let gameStart = false;
 let gameInitialized = false;
 let bg;
 function preload() {
+  // All art and sound assets are loaded once here so the game can reuse
+  // them by key later instead of reloading files during gameplay.
   Game.assets.castle = loadImage('assets/Castle.png');
   Game.assets.logo = loadImage('assets/high-resolution-color-logo.png');
   Game.assets.archerTower = loadImage('assets/Castle Rush tower 1 placeholder.png');
   Game.assets.knightTower = loadImage('assets/knightIcon.png');
   Game.assets.wizardTower = loadImage('assets/wizardIcon.png');
+  Game.assets.wizardSprite = loadImage('assets/wizard_big.png');
   Game.assets.trash = loadImage('assets/trashIcon.png');
   Game.assets.startbutton = loadImage('assets/CastleRush Start Placeholder.png');
   Game.assets.settingbutton = loadImage('assets/CastleRush Settings Placeholder.png');
