@@ -28,6 +28,10 @@ function setupRoundButtons() {
 }
 
 function mousePressed() {
+  if (gameLost || gameWon) {
+    return;
+  }
+
   // Speed up / slow down button (only during active round)
   if (Game.level && Game.level.levelActive) {
     if (isInsideButton(mouseX, mouseY, Game.ui.speedUpButton) && Game.spedUp) {

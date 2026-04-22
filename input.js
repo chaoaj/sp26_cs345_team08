@@ -5,7 +5,7 @@ function isInsideButton(x, y, button) {
 const towerConfigs = {
   1: { cost: 3, range: 100, cooldown: 30, damage: 1 },
   2: { cost: 5, range: 120, cooldown: 55, damage: 1, splashRadius: 60 },
-  3: { cost: 1, range: 50, cooldown: 70, damage: 2, splashRadius: 50 },
+  3: { cost: 5, range: 50, cooldown: 70, damage: 2, splashRadius: 50 },
 };
 
 function onToggleAutoStart() {

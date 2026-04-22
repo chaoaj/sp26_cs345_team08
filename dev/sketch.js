@@ -31,6 +31,11 @@ function draw() {
     return;
   }
 
+  if (gameWon) {
+    drawWinScreen();
+    return;
+  }
+
   if (gameStart == false) {
     menuDraw();
     startButton();
@@ -69,6 +74,10 @@ function draw() {
 
     if (Game.castleHealth <= 0) {
       gameLost = true;
+    }
+
+    if (!Game.level.levelActive && Game.level.currentLevel > 20 && Game.enemies.length === 0) {
+      gameWon = true;
     }
   }
 }
