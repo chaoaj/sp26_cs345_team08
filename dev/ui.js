@@ -12,7 +12,8 @@ function renderHud() {
 
 function renderSidebar() {
   fill('#7c7c7c');
-  rect(1300, 0, 300, 825);
+  // rect(1300, 0, 300, 825);
+  image(Game.assets.wall,1300, 0, 300, 825);
   image(Game.assets.logo, 1310, 10, 220, 220);
 }
 
@@ -80,25 +81,29 @@ function renderTowerButtons() {
   };
 
   for (let button of Game.ui.towerButtons) {
-    image(Game.assets.archerTower, button.x, button.y, button.w, button.h);
+    if (button.type == 1) {
+      image(Game.assets.archerTower, button.x, button.y, button.w, button.h);
+    }
 
     if (button.type === 2) {
-      fill(40, 90, 180, 180);
-      noStroke();
-      rect(button.x, button.y, button.w, button.h);
-      fill(255);
-      textSize(18);
-      textAlign(CENTER, CENTER);
-      text('WIZ', button.x + button.w / 2, button.y + button.h / 2);
+      image(Game.assets.wizardTower, button.x, button.y, button.w, button.h);
+      // fill(40, 90, 180, 180);
+      // noStroke();
+      // rect(button.x, button.y, button.w, button.h);
+      /// fill(255);
+      // textSize(18);
+      // textAlign(CENTER, CENTER);
+      // text('WIZ', button.x + button.w / 2, button.y + button.h / 2);
     }
     if (button.type === 3) {
-      fill(40, 90, 180, 180);
-      noStroke();
-      rect(button.x, button.y, button.w, button.h);
-      fill(255);
-      textSize(18);
-      textAlign(CENTER, CENTER);
-      text('Knight', button.x + button.w / 2, button.y + button.h / 2);
+      image(Game.assets.knightTower, button.x, button.y, button.w, button.h);
+      // fill(40, 90, 180, 180);
+      // noStroke();
+      // rect(button.x, button.y, button.w, button.h);
+      // fill(255);
+      // textSize(18);
+      // textAlign(CENTER, CENTER);
+      // text('Knight', button.x + button.w / 2, button.y + button.h / 2);
     }
 
     if (Game.selectedBuyButton === button.type) {
@@ -172,10 +177,10 @@ function renderDraggingTowerPreview() {
   noStroke();
   circle(mouseX, mouseY, 20);
 
-  fill(255);
-  noStroke();
-  rect(Game.ui.trashButton.x, Game.ui.trashButton.y, Game.ui.trashButton.w, Game.ui.trashButton.h);
-  image(Game.assets.trash, 1386, 600, 79, 100);
+  // fill(255);
+  // noStroke();
+  // rect(Game.ui.trashButton.x, Game.ui.trashButton.y, Game.ui.trashButton.w, Game.ui.trashButton.h);
+  image(Game.assets.trash, 1375, 600, 100, 100);
 }
 
 function renderCastle() {
