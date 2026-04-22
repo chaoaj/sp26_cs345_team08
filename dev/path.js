@@ -86,15 +86,15 @@ function createPath(path) {
 }
 
 function renderPath(path) {
-  noFill();
-  stroke('#4e4848');
-  strokeWeight(20);
-  beginShape();
-  for (let p of path) {
-    vertex(p.x, p.y);
-  }
-  endShape();
-  strokeWeight(1);
+//   noFill();
+//   stroke('#4e4848');
+//   strokeWeight(20);
+//   beginShape();
+//   for (let p of path) {
+//     vertex(p.x, p.y);
+//   }
+//   endShape();
+//   strokeWeight(1);
 }
 
 function isOnPath(x, y, path) {

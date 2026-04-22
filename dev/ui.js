@@ -179,11 +179,11 @@ function renderDraggingTowerPreview() {
 }
 
 function renderCastle() {
-  fill('#8B4513');
-  stroke(0);
-  strokeWeight(2);
-  rect(1200, 445, 40, 40);
-  image(Game.assets.castle, 1200, 445, 40, 40);
+//   fill('#8B4513');
+//   stroke(0);
+//   strokeWeight(2);
+//   rect(1200, 445, 40, 40);
+//   image(Game.assets.castle, 1200, 445, 40, 40);
 }
 
 function isOnSidebar(x, y) {

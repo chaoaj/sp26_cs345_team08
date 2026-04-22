@@ -21,6 +21,7 @@ window.Game = {
     twoxicon: null,
     volumeIcon: null,
     muteIcon: null,
+	background: null,
   },
   ui: {
     towerButtons: [

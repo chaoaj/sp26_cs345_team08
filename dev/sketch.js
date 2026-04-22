@@ -1,6 +1,6 @@
 let gameStart = false;
 let gameInitialized = false;
-
+let bg;
 function preload() {
   Game.assets.castle = loadImage('assets/Castle.png');
   Game.assets.logo = loadImage('assets/high-resolution-color-logo.png');
@@ -13,6 +13,7 @@ function preload() {
   Game.assets.volumeIcon    = loadImage('assets/Volume.png');
   Game.assets.muteIcon      = loadImage('assets/Muted.png');
   Game.assets.hiteffect     = loadSound('assets/hiteffectupd.mp3');
+  Game.assets.background = loadImage('assets/test.png');
 }
 
 function setup() {
@@ -22,6 +23,7 @@ function setup() {
 }
 
 function draw() {
+	background(Game.assets.background)
   if (gameLost) {
     drawLoseScreen();
     return;
@@ -44,7 +46,6 @@ function draw() {
       gameInitialized = true;
     }
 
-    background(220);
 
     syncRoundButtons();
     renderPath(Game.path);
