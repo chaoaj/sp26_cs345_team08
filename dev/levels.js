@@ -48,7 +48,7 @@ class Levels {
     if (this.spawnIndex >= this.waveEnemies.length && enemies.length === 0) {
       this.levelActive = false;
 	  this.currentLevel+=1
-	  if(Game.spedUp){
+	  if(Game.spedUp && !Game.autoStartLevel){
 		for(let enemy of Game.level.waveEnemies){
 			enemy.slowDown()
 		}

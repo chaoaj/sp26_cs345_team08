@@ -31,9 +31,21 @@ class WizardTower extends Tower {
       },
     });
     this.splashRadius = splashRadius;
+	this.spedUp = Game.spedUp;
+	console.log(this.spedUp)
   }
 
   attack(enemy) {
-    this.projectiles.push(new SplashOrbProjectile(this.x, this.y, enemy, this.damage, 5, this.splashRadius));
+	let speed = this.spedUp ? 10 : 5;
+    this.projectiles.push(new SplashOrbProjectile(this.x, this.y, enemy, this.damage, speed, this.splashRadius));
+  }
+    speedUp() {
+    this.maxCooldown /= 6;
+    this.spedUp = true;
+  }
+
+  slowDown() {
+    this.spedUp = false;
+    this.maxCooldown *= 6;
   }
 }

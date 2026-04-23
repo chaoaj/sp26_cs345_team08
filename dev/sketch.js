@@ -84,6 +84,16 @@ function draw() {
 
     if (Game.castleHealth <= 0) {
       gameLost = true;
+	  if(Game.spedUp){
+		for(let enemy of Game.level.waveEnemies){
+			enemy.slowDown()
+		}
+		for(let tower of Game.towers){
+			tower.slowDown()
+		}
+		Game.spedUp = false;
+		Game.spawnDelayMultiplier = 1
+	  }
     }
 
     if (!Game.level.levelActive && Game.level.currentLevel > 20 && Game.enemies.length === 0) {

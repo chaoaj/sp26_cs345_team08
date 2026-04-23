@@ -44,6 +44,9 @@ class Tower {
     this.sprite = this.createSpriteConfig(visualConfig.sprite);
 
     this.facingRow = this.sprite ? this.sprite.defaultRow : 0;
+		if(Game.spedUp){
+		this.speedUp()
+	}
   }
 
   createRangeStyle(overrideStyle = {}) {
@@ -89,13 +92,13 @@ class Tower {
   }
 
   speedUp() {
-    this.maxCooldown /= 5;
+    this.maxCooldown /= 4;
     this.spedUp = true;
   }
 
   slowDown() {
     this.spedUp = false;
-    this.maxCooldown *= 5;
+    this.maxCooldown *= 4;
   }
 
   findTarget(enemies) {
