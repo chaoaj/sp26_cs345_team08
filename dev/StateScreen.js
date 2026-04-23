@@ -25,7 +25,7 @@ function resetGameState() {
   gameWon = false;
   gameStart = false;
   gameInitialized = false;
-  Game.castleHealth = 10;
+  Game.castleHealth = 20;
   Game.gold = 5;
   Game.enemies = [];
   Game.towers = [];
