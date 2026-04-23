@@ -65,10 +65,10 @@ class Levels {
     let enemies = [];
     let enemyCount = max(1, this.currentLevel * 5);
     for (let i = 0; i < enemyCount; i++) {
-      enemies.push(new Enemy(4, 1, 1, this.path));
+      enemies.push(new Enemy(4, 1, 1, this.path, 10));
     }
 	if(this.currentLevel%2==0){
-		enemies.push(new Enemy(15, 1, 1, this.path));
+		enemies.push(new Enemy(15, 1, 1, this.path,10));
 	}
 	console.log(Game.enemies)
     return enemies;

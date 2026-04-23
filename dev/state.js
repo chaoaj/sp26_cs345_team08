@@ -7,7 +7,7 @@ window.Game = {
   gold: 5,
   enemies: [],
   towers: [],
-  castleHealth: 10,
+  castleHealth:20,
   selectedTower: null,
   selectedBuyButton: null,
   draggingTowerType: null,

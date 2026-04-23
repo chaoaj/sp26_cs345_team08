@@ -1,11 +1,12 @@
 class Enemy {
-  constructor(health, damage, speed, path) {
+  constructor(health, damage, speed, path, coolDown) {
     this.path = path;
     this.pos = path[0].copy();
     this.targetPos = 1;
     this.speed = speed;
     this.health = health;
     this.damage = damage;
+	this.coolDown = 0;
   }
 
   speedUp() {
