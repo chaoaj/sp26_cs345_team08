@@ -20,7 +20,13 @@ function preload() {
   Game.assets.hiteffect     = loadSound('assets/hiteffectupd.mp3');
   Game.assets.background = loadImage('assets/test.png');
   Game.assets.wall      = loadImage('assets/UIWall.png');
-
+  Game.assets.startRoundButton = loadImage('assets/start_round_big.png');
+  Game.assets.startRoundButtonHover = loadImage('assets/start_round_hover_big.png');
+  Game.assets.roundActiveButton = loadImage('assets/round_active_big.png');
+  Game.assets.switchAutoButton = loadImage('assets/switch_auto_big.png');
+  Game.assets.switchAutoButtonHover = loadImage('assets/switch_auto_hover_big.png');
+  Game.assets.switchManualButton = loadImage('assets/switch_manual_big.png');
+  Game.assets.switchManualButtonHover = loadImage('assets/switch_manual_hover_big.png');
 }
 
 function setup() {
@@ -48,9 +54,9 @@ function draw() {
     drawSettingsMenu();
     return;
   }
-  
+
   if (gameStart == true) {
-    
+
     if (!gameInitialized) {
       createPath(Game.path);
       Game.level = new Levels(Game.path);
@@ -74,7 +80,7 @@ function draw() {
     renderCastle();
     drawSettingsMenu();
     renderSettingIconButton()
-	renderSpeedUpButton() 
+	renderSpeedUpButton()
 
     if (Game.castleHealth <= 0) {
       gameLost = true;

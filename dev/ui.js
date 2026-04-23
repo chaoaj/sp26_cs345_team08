@@ -26,18 +26,26 @@ function renderRoundControls() {
   textSize(14);
   text('Round Mode: ' + (Game.autoStartLevel ? 'Auto' : 'Manual'), 1320, 730);
 
-  fill(Game.level.levelActive ? '#6f6f6f' : '#4caf50');
+  /* fill(Game.level.levelActive ? '#6f6f6f' : '#4caf50');
   stroke(0);
   strokeWeight(2);
-  rect(start.x, start.y, start.w, start.h, 6);
+  rect(start.x, start.y, start.w, start.h, 6); */
 
-  fill(255);
+  /* fill(255);
   noStroke();
   textSize(16);
   textAlign(CENTER, CENTER);
-  text(Game.level.levelActive ? 'Round Active' : 'Start Round', start.x + start.w / 2, start.y + start.h / 2);
+  text(Game.level.levelActive ? 'Round Active' : 'Start Round', start.x + start.w / 2, start.y + start.h / 2); */
 
-  fill(Game.autoStartLevel ? '#ef5350' : '#1e88e5');
+  if (Game.level.levelActive) {
+    image(Game.assets.roundActiveButton, start.x, start.y, start.w, start.h);
+  } else if (isInsideButton(mouseX, mouseY, start)) {
+    image(Game.assets.startRoundButtonHover, start.x, start.y, start.w, start.h);
+  } else {
+    image(Game.assets.startRoundButton, start.x, start.y, start.w, start.h);
+  }
+
+  /* fill(Game.autoStartLevel ? '#ef5350' : '#1e88e5');
   stroke(0);
   strokeWeight(2);
   rect(mode.x, mode.y, mode.w, mode.h, 6);
@@ -47,7 +55,19 @@ function renderRoundControls() {
   textSize(14);
   text(Game.autoStartLevel ? 'Switch to Manual' : 'Switch to Auto', mode.x + mode.w / 2, mode.y + mode.h / 2);
 
-  textAlign(LEFT, BASELINE);
+  textAlign(LEFT, BASELINE); */
+
+  if (Game.autoStartLevel) {
+    const img = isInsideButton(mouseX, mouseY, mode)
+      ? Game.assets.switchManualButtonHover
+      : Game.assets.switchManualButton;
+    image(img, mode.x, mode.y, mode.w, mode.h);
+  } else {
+    const img = isInsideButton(mouseX, mouseY, mode)
+      ? Game.assets.switchAutoButtonHover
+      : Game.assets.switchAutoButton;
+    image(img, mode.x, mode.y, mode.w, mode.h);
+  }
 }
 
 function renderTowerButtons() {
