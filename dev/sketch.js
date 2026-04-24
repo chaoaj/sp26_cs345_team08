@@ -29,6 +29,7 @@ function preload() {
   Game.assets.switchManualButton = loadImage('assets/switch_manual_big.png');
   Game.assets.switchManualButtonHover = loadImage('assets/switch_manual_hover_big.png');
   Game.assets.music                   = loadSound('assets/Kevin Macleod - Thatched Villagers.mp3');
+  Game.assets.enemyHit = loadSound('assets/swordsound.mp3');
 }
 
 function setup() {

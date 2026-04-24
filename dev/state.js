@@ -29,6 +29,7 @@ window.Game = {
     switchToManualButtonHover: null,
     switchToAutoButton: null,
     switchToAutoButtonHover: null,
+	enemyHit: null,
   },
   ui: {
     towerButtons: [
