@@ -17,7 +17,8 @@ function preload() {
   Game.assets.twoxicon   = loadImage('assets/2x.png');
   Game.assets.volumeIcon    = loadImage('assets/Volume.png');
   Game.assets.muteIcon      = loadImage('assets/Muted.png');
-  Game.assets.hiteffect     = loadSound('assets/hiteffectupd.mp3');
+  Game.assets.wizardhit     = loadSound('assets/explosion.mp3');
+  Game.assets.archerhit     = loadSound('assets/archer.mp3');
   Game.assets.background = loadImage('assets/test.png');
   Game.assets.wall      = loadImage('assets/UIWall.png');
   Game.assets.startRoundButton = loadImage('assets/start_round_big.png');
@@ -27,6 +28,7 @@ function preload() {
   Game.assets.switchAutoButtonHover = loadImage('assets/switch_auto_hover_big.png');
   Game.assets.switchManualButton = loadImage('assets/switch_manual_big.png');
   Game.assets.switchManualButtonHover = loadImage('assets/switch_manual_hover_big.png');
+  Game.assets.music                   = loadSound('assets/Kevin Macleod - Thatched Villagers.mp3');
 }
 
 function setup() {
@@ -58,6 +60,7 @@ function draw() {
   if (gameStart == true) {
 
     if (!gameInitialized) {
+      Game.assets.music.play();
       createPath(Game.path);
       Game.level = new Levels(Game.path);
       setupRoundButtons();
