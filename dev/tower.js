@@ -195,8 +195,7 @@ class Tower {
       return false;
     }
 
-    // frameCount increases every draw call. Dividing by animationRate slows
-    // the animation down, then modulo keeps the frame index inside the sheet.
+    // Use the current target direction and a simple frame counter for animation.
     const frameCol = floor(frameCount / this.sprite.animationRate) % this.sprite.frameCols;
     const srcX = frameCol * this.sprite.frameWidth;
     const srcY = this.facingRow * this.sprite.frameHeight;
@@ -226,11 +225,7 @@ class Tower {
   }
 
   render() {
-    // Render order matters:
-    // 1. update facing so the sprite points toward the current target
-    // 2. draw the attack range ring
-    // 3. draw either the sprite or the fallback body
-    // 4. draw any projectiles launched by this tower
+    // Render order: update direction, draw range, then sprite/body, then projectiles.
     this.updateFacingFromTarget();
     this.renderRange();
 

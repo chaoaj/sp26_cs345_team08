@@ -1,8 +1,5 @@
 class WizardTower extends Tower {
   constructor(x, y, attackRange = 120, cooldown = 55, damage = 1, splashRadius = 60) {
-    // WizardTower does not draw itself directly.
-    // It passes sprite metadata into the shared Tower renderer so the base
-    // class can handle animation, direction changes, and fallback drawing.
     super(x, y, attackRange, cooldown, damage, 'Wizard Tower', {
       rangeStyle: {
         fill: [120, 180, 255, 40],
@@ -11,8 +8,6 @@ class WizardTower extends Tower {
       },
       sprite: {
         assetKey: 'wizardSprite',
-        // The wizard sprite sheet is arranged in rows by direction and
-        // columns by animation frame.
         frameWidth: 128,
         frameHeight: 128,
         frameCols: 2,
