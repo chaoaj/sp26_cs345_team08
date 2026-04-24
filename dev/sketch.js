@@ -35,7 +35,7 @@ function preload() {
 function setup() {
   createCanvas(1535, 825);
   userStartAudio();  // unlock audio for browser autoplay policy
-  applyVolume();     // apply Game.volume (0.5) immediately at startup
+  applyMusicVolume();     // apply Game.volume (0.5) immediately at startup
 }
 
 function draw() {

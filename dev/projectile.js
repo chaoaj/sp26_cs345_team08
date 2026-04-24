@@ -23,7 +23,7 @@ class OrbProjectile {
 
     if (distanceToTarget <= this.speed + this.radius + 20) {
       this.targetEnemy.health -= this.damage;
-      Game.assets.archerhit.play();
+       playSFX(Game.assets.archerhit);
       this.active = false;
       return;
     }
@@ -75,7 +75,7 @@ class SplashOrbProjectile extends OrbProjectile {
       if (enemy.health <= 0) continue;
       if (dist(centerPos.x, centerPos.y, enemy.pos.x, enemy.pos.y) <= this.splashRadius) {
         enemy.health -= this.damage;
-        Game.assets.wizardhit.play();
+         playSFX(Game.assets.wizardhit);
       }
     }
   }
