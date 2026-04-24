@@ -12,7 +12,8 @@ function renderHud() {
 
 function renderSidebar() {
   fill('#7c7c7c');
-  rect(1300, 0, 300, 825);
+  // rect(1300, 0, 300, 825);
+  image(Game.assets.wall,1300, 0, 300, 825);
   image(Game.assets.logo, 1310, 10, 220, 220);
 }
 
@@ -25,18 +26,26 @@ function renderRoundControls() {
   textSize(14);
   text('Round Mode: ' + (Game.autoStartLevel ? 'Auto' : 'Manual'), 1320, 730);
 
-  fill(Game.level.levelActive ? '#6f6f6f' : '#4caf50');
+  /* fill(Game.level.levelActive ? '#6f6f6f' : '#4caf50');
   stroke(0);
   strokeWeight(2);
-  rect(start.x, start.y, start.w, start.h, 6);
+  rect(start.x, start.y, start.w, start.h, 6); */
 
-  fill(255);
+  /* fill(255);
   noStroke();
   textSize(16);
   textAlign(CENTER, CENTER);
-  text(Game.level.levelActive ? 'Round Active' : 'Start Round', start.x + start.w / 2, start.y + start.h / 2);
+  text(Game.level.levelActive ? 'Round Active' : 'Start Round', start.x + start.w / 2, start.y + start.h / 2); */
 
-  fill(Game.autoStartLevel ? '#ef5350' : '#1e88e5');
+  if (Game.level.levelActive) {
+    image(Game.assets.roundActiveButton, start.x, start.y, start.w, start.h);
+  } else if (isInsideButton(mouseX, mouseY, start)) {
+    image(Game.assets.startRoundButtonHover, start.x, start.y, start.w, start.h);
+  } else {
+    image(Game.assets.startRoundButton, start.x, start.y, start.w, start.h);
+  }
+
+  /* fill(Game.autoStartLevel ? '#ef5350' : '#1e88e5');
   stroke(0);
   strokeWeight(2);
   rect(mode.x, mode.y, mode.w, mode.h, 6);
@@ -46,9 +55,20 @@ function renderRoundControls() {
   textSize(14);
   text(Game.autoStartLevel ? 'Switch to Manual' : 'Switch to Auto', mode.x + mode.w / 2, mode.y + mode.h / 2);
 
-  textAlign(LEFT, BASELINE);
-}
+  textAlign(LEFT, BASELINE); */
 
+  if (Game.autoStartLevel) {
+    const img = isInsideButton(mouseX, mouseY, mode)
+      ? Game.assets.switchManualButtonHover
+      : Game.assets.switchManualButton;
+    image(img, mode.x, mode.y, mode.w, mode.h);
+  } else {
+    const img = isInsideButton(mouseX, mouseY, mode)
+      ? Game.assets.switchAutoButtonHover
+      : Game.assets.switchAutoButton;
+    image(img, mode.x, mode.y, mode.w, mode.h);
+  }
+}
 
 function renderTowerButtons() {
   const buttonInfo = {
@@ -81,27 +101,29 @@ function renderTowerButtons() {
   };
 
   for (let button of Game.ui.towerButtons) {
-    image(Game.assets.archerTower, button.x, button.y, button.w, button.h);
+    if (button.type == 1) {
+      image(Game.assets.archerTower, button.x, button.y, button.w, button.h);
+    }
 
     if (button.type === 2) {
-      fill(40, 90, 180, 180);
-      noStroke();
-      rect(button.x, button.y, button.w, button.h);
-
-      fill(255);
-      textSize(18);
-      textAlign(CENTER, CENTER);
-      text('WIZ', button.x + button.w / 2, button.y + button.h / 2);
+      image(Game.assets.wizardTower, button.x, button.y, button.w, button.h);
+      // fill(40, 90, 180, 180);
+      // noStroke();
+      // rect(button.x, button.y, button.w, button.h);
+      /// fill(255);
+      // textSize(18);
+      // textAlign(CENTER, CENTER);
+      // text('WIZ', button.x + button.w / 2, button.y + button.h / 2);
     }
     if (button.type === 3) {
-      fill(40, 90, 180, 180);
-      noStroke();
-      rect(button.x, button.y, button.w, button.h);
-
-      fill(255);
-      textSize(18);
-      textAlign(CENTER, CENTER);
-      text('Knight', button.x + button.w / 2, button.y + button.h / 2);
+      image(Game.assets.knightTower, button.x, button.y, button.w, button.h);
+      // fill(40, 90, 180, 180);
+      // noStroke();
+      // rect(button.x, button.y, button.w, button.h);
+      // fill(255);
+      // textSize(18);
+      // textAlign(CENTER, CENTER);
+      // text('Knight', button.x + button.w / 2, button.y + button.h / 2);
     }
 
     if (Game.selectedBuyButton === button.type) {
@@ -162,11 +184,6 @@ function renderSelectedTowerPanel() {
   stroke(255, 255, 0);
   strokeWeight(2);
   circle(Game.selectedTower.x, Game.selectedTower.y, 24);
-
-  fill(255);
-  noStroke();
-  rect(Game.ui.trashButton.x, Game.ui.trashButton.y, Game.ui.trashButton.w, Game.ui.trashButton.h); //trash
-  image(Game.assets.trash, 1386, 600, 79, 100);
 }
 
 function renderDraggingTowerPreview() {
@@ -180,18 +197,18 @@ function renderDraggingTowerPreview() {
   noStroke();
   circle(mouseX, mouseY, 20);
 
-  fill(255);
-  noStroke();
-  rect(Game.ui.trashButton.x, Game.ui.trashButton.y, Game.ui.trashButton.w, Game.ui.trashButton.h);
-  image(Game.assets.trash, 1386, 600, 79, 100);
+  // fill(255);
+  // noStroke();
+  // rect(Game.ui.trashButton.x, Game.ui.trashButton.y, Game.ui.trashButton.w, Game.ui.trashButton.h);
+  image(Game.assets.trash, 1375, 600, 100, 100);
 }
 
 function renderCastle() {
-  fill('#8B4513');
-  stroke(0);
-  strokeWeight(2);
-  rect(1250, 680, 40, 40);
-  image(Game.assets.castle, 1250, 680, 40, 40);
+//   fill('#8B4513');
+//   stroke(0);
+//   strokeWeight(2);
+//   rect(1200, 445, 40, 40);
+//   image(Game.assets.castle, 1200, 445, 40, 40);
 }
 
 function isOnSidebar(x, y) {
@@ -203,7 +220,6 @@ function syncRoundButtons() {
 }
 
 function renderSettingIconButton() {
-  //setting button
   const icon = Game.ui.settingIconButton;
   fill(255);
   stroke(0);
@@ -211,8 +227,8 @@ function renderSettingIconButton() {
   rect(icon.x, icon.y, icon.w, icon.h, 6);
   image(Game.assets.settingIcon, icon.x, icon.y, icon.w, icon.h);
 }
+
 function renderSpeedUpButton() {
-  //setting button
   const icon = Game.ui.speedUpButton;
   fill(255);
   stroke(0);
