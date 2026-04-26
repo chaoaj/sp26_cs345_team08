@@ -140,8 +140,8 @@ function renderTowerButtons() {
       stroke(255, 200, 0);
       strokeWeight(2);
       const info = buttonInfo[button.type];
-      const tooltipHeight = info.aoe ? 120 : 100;
-      rect(button.x - 160, button.y, 150, tooltipHeight, 8);
+      const tooltipHeight = info.aoe ? 150 : 125;
+      rect(button.x - 160, button.y, 140, tooltipHeight, 8);
 
     // Tooltip text
       fill(255);
