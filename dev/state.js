@@ -3,6 +3,8 @@ window.Game = {
   spawnDelayMultiplier: 1,
   spedUp: false,
   volume: 0.5,
+  sfxVolume: 0.5,
+  musicVolume: 0.5,
   isMuted: false,
   gold: 5,
   enemies: [],

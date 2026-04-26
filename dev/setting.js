@@ -8,10 +8,10 @@ const POPUP = { x: 517.5, y: 237.5, w: 500, h: 350 };
 const CLOSE_BTN = { x: 680, y: 520, w: 165, h: 40 };
 
 // const SLIDER = { x: 615, y: 430, w: 360 };  
-const SFX_SLIDER = { x: 615, y: 430, w: 360 };    
-const MUSIC_SLIDER = { x: 615, y: 490, w: 360 };  
+const SFX_SLIDER = { x: 615, y: 390, w: 360 };    
+const MUSIC_SLIDER = { x: 615, y: 450, w: 360 };  
 
-const MUTE_BTN = { x: 552, y: 414, w: 40, h: 40 };
+const MUTE_BTN = { x: 552, y: 379, w: 40, h: 40 };
 
 function drawSettingsMenu() {
   if (!settingsOpen) return;
@@ -73,6 +73,10 @@ function drawSettingsMenu() {
   textSize(18);
   textStyle(BOLD);
   text('Close', CLOSE_BTN.x + CLOSE_BTN.w / 2, CLOSE_BTN.y + CLOSE_BTN.h / 2);
+
+  // Reset text state so nothing outside this menu is affected
+  textAlign(LEFT, BASELINE);
+  textStyle(NORMAL);
 }
 
 
