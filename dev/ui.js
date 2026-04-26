@@ -21,10 +21,12 @@ function renderRoundControls() {
   const start = Game.ui.startRoundButton;
   const mode = Game.ui.modeToggleButton;
 
-  fill(30, 30, 30);
+  fill(35, 30, 30);
   noStroke();
-  textSize(14);
+  textSize(20);
+  textStyle(BOLD);
   text('Round Mode: ' + (Game.autoStartLevel ? 'Auto' : 'Manual'), 1320, 730);
+  textStyle(NORMAL);
 
   /* fill(Game.level.levelActive ? '#6f6f6f' : '#4caf50');
   stroke(0);
