@@ -5,24 +5,22 @@ class Enemy {
     this.targetPos = 1;
     this.speed = speed;
     this.health = health;
+    this.initialHealth = health;
     this.damage = damage;
-	this.coolDown = 0;
-	this.type = type
+    this.coolDown = 0;
+    this.type = type;
 
-    // Sprite and animation properties
+    // Only the basic enemy uses a sprite sheet for now.
     this.sprite = this.createSpriteConfig(type);
-    this.facingRow = this.sprite ? this.sprite.defaultRow : 0;  // Which direction-row is visible
-    this.animationFrame = 0;
-    this.lastMoveDirection = createVector(0, 1);  // Track movement direction for sprite facing
+    this.facingRow = this.sprite ? this.sprite.defaultRow : 0;
+    this.lastMoveDirection = createVector(0, 1);
   }
 
   createSpriteConfig(type) {
-    // Only basic enemies (red goblins) have sprite sheets; others fall back to colored circles
     if (type !== 'basic') {
       return null;
     }
 
-    // Configure the grunt goblin sprite sheet (512x512, 4x4 grid = 128x128 per frame)
     return {
       assetKey: 'gruntGoblinSprite',
       frameWidth: 128,
@@ -51,41 +49,37 @@ class Enemy {
     this.speed = this.speed / 5;
   }
 
- updatePos() {
-  if (this.targetPos >= this.path.length) return;
+  updatePos() {
+    if (this.targetPos >= this.path.length) return;
 
-  let target = this.path[this.targetPos];
-  let direction = p5.Vector.sub(target, this.pos);
-  let dist = direction.mag();
+    let target = this.path[this.targetPos];
+    let direction = p5.Vector.sub(target, this.pos);
+    let dist = direction.mag();
 
-  if (dist <= this.speed) {
-    // Store direction before reaching target 
+    if (dist <= this.speed) {
+      if (dist > 0) {
+        this.lastMoveDirection = direction.copy();
+      }
+      this.pos = target.copy();
+      this.targetPos++;
+
+      let leftover = this.speed - dist;
+      if (this.targetPos < this.path.length && leftover > 0) {
+        let nextDir = p5.Vector.sub(this.path[this.targetPos], this.pos);
+        nextDir.setMag(leftover);
+        this.pos.add(nextDir);
+      }
+      return;
+    }
+
     if (dist > 0) {
       this.lastMoveDirection = direction.copy();
     }
-    this.pos = target.copy();
-    this.targetPos++;
-
-    // Handle leftover speed if there's a next waypoint
-    let leftover = this.speed - dist;
-    if (this.targetPos < this.path.length && leftover > 0) {
-      let nextDir = p5.Vector.sub(this.path[this.targetPos], this.pos);
-      nextDir.setMag(leftover);
-      this.pos.add(nextDir);
-    }
-    return;
+    direction.setMag(this.speed);
+    this.pos.add(direction);
   }
-
-  // Move toward current target waypoint and record direction for sprite facing
-  if (dist > 0) {
-    this.lastMoveDirection = direction.copy();
-  }
-  direction.setMag(this.speed);
-  this.pos.add(direction);
-}
 
   updateFacingFromMovement() {
-    // Skip if no sprite or sprite is not directional
     if (!this.sprite || !this.sprite.directional) {
       return;
     }
@@ -93,8 +87,6 @@ class Enemy {
     const dx = this.lastMoveDirection.x;
     const dy = this.lastMoveDirection.y;
 
-    // Pick the row based on primary direction of movement
-    // If moving more horizontally, face left/right; otherwise face up/down
     if (abs(dx) > abs(dy)) {
       this.facingRow = dx >= 0 ? this.sprite.rowByDirection.right : this.sprite.rowByDirection.left;
     } else {
@@ -135,34 +127,57 @@ class Enemy {
   }
 
   render() {
-  if(this.type == "berserker"){
-		fill(255, 213, 0);
-    	ellipse(this.pos.x, this.pos.y, 40);
-	}
-	else if(this.type == "brute"){
-		fill(43, 200, 100);
-    	ellipse(this.pos.x, this.pos.y, 40);
-	}
-	else if(this.type == 'boss'){
-		fill(0, 0, 0);
-		ellipse(this.pos.x, this.pos.y, 60);
-	}
-
     this.updateFacingFromMovement();
+
     if (this.renderSprite()) {
       this.renderHealthBar();
       return;
     }
 
-	if(this.type == 'basic'){
-		fill(255, 0, 0);
-	    ellipse(this.pos.x, this.pos.y, 40);
-	}
+    if (this.type == "berserker") {
+      fill(255, 213, 0);
+      ellipse(this.pos.x, this.pos.y, 40);
+    }
+    else if (this.type == "brute") {
+      fill(43, 200, 100);
+      ellipse(this.pos.x, this.pos.y, 40);
+    }
+    else if (this.type == 'boss') {
+      fill(0, 0, 0);
+      ellipse(this.pos.x, this.pos.y, 60);
+    }
+    else if (this.type == 'basic') {
+      fill(255, 0, 0);
+      ellipse(this.pos.x, this.pos.y, 40);
+    }
 
     this.renderHealthBar();
   }
 
   renderHealthBar() {
+    let barWidth = 40;
+    let barHeight = 7;
+    let barOffset = -30;
+
+    if (Game.assets.healthbarOuter && Game.assets.healthbarInner) {
+      image(
+        Game.assets.healthbarOuter,
+        this.pos.x - barWidth / 2,
+        this.pos.y + barOffset,
+        barWidth,
+        barHeight
+      );
+
+      image(
+        Game.assets.healthbarInner,
+        this.pos.x - barWidth / 2,
+        this.pos.y + barOffset,
+        barWidth * (this.health / this.initialHealth),
+        barHeight
+      );
+      return;
+    }
+
     let squareSize = 7;
     let gap = 2;
     let totalWidth = 4 * squareSize + 3 * gap;

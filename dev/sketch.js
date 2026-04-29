@@ -39,6 +39,8 @@ function preload() {
   Game.assets.music                   = loadSound('assets/music.mp3');
   Game.assets.enemyHit = loadSound('assets/swordsound.mp3');
   Game.assets.startMenu = loadImage('assets/Start menu2.jpg');
+  Game.assets.healthbarOuter = loadImage('assets/healthbar_outer.png');
+  Game.assets.healthbarInner = loadImage('assets/healthbar_inner.png');
 }
 
 function setup() {
@@ -82,13 +84,15 @@ function draw() {
     renderPath(Game.path);
     updateRoundState();
     updateAndRenderEnemies();
+    renderTowerUpgrade();
+    renderSelectedTowerPanel();
     updateAndRenderTowers();
 
     renderHud();
     renderSidebar();
     renderRoundControls();
     renderTowerButtons();
-    renderSelectedTowerPanel();
+
     renderDraggingTowerPreview();
     renderCastle();
     drawSettingsMenu();

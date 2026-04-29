@@ -23,7 +23,7 @@ class OrbProjectile {
 
     if (distanceToTarget <= this.speed + this.radius + 20) {
       this.targetEnemy.health -= this.damage;
-       playSFX(Game.assets.archerhit);
+      playSFX(Game.assets.archerhit);
       this.active = false;
       return;
     }

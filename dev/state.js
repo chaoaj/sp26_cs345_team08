@@ -39,12 +39,18 @@ window.Game = {
     speedDownButton: null,
     speedDownButtonHover: null,
 	  enemyHit: null,
+    healthbarOuter: null,
+    healthbarInner: null,
   },
   ui: {
     towerButtons: [
       { type: 1, x: 1375, y: 150, w: 100, h: 100 },
       { type: 2, x: 1375, y: 270, w: 100, h: 100 },
       { type: 3, x: 1375, y: 390, w: 100, h: 100 },
+    ],
+    upgradeButtons: [
+      { type: 1, x: 1035, y: 615, w: 50, h: 50},
+      { type: 2, x: 1035, y: 680, w: 50, h: 50},
     ],
     trashButton: { x: 1375, y: 600, w: 100, h: 100 },
     startRoundButton: { x: 1320, y: 740, w: 170, h: 38 }, // 170, 34 (original values, changed for image buttons)

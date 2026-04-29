@@ -21,7 +21,7 @@ const DEFAULT_BODY_STYLE = {
 };
 
 class Tower {
-  constructor(x, y, attackRange = 100, cooldown = 30, damage = 1, towerName = null, visualConfig = {}) {
+  constructor(x, y, attackRange = 100, cooldown = 30, damage = 1, towerName = null, visualConfig = {}, upgradeType = null) {
     this.x = x;
     this.y = y;
     this.pos = createVector(x, y);
@@ -32,6 +32,7 @@ class Tower {
     this.damage = damage;
     this.currentCooldown = 0;
     this.towerName = towerName;
+    this.upgradeType = upgradeType;
 
     this.targetEnemy = null;
     this.projectiles = [];
