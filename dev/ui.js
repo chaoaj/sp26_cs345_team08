@@ -28,17 +28,6 @@ function renderRoundControls() {
   text('Round Mode: ' + (Game.autoStartLevel ? 'Auto' : 'Manual'), 1320, 730);
   textStyle(NORMAL);
 
-  /* fill(Game.level.levelActive ? '#6f6f6f' : '#4caf50');
-  stroke(0);
-  strokeWeight(2);
-  rect(start.x, start.y, start.w, start.h, 6); */
-
-  /* fill(255);
-  noStroke();
-  textSize(16);
-  textAlign(CENTER, CENTER);
-  text(Game.level.levelActive ? 'Round Active' : 'Start Round', start.x + start.w / 2, start.y + start.h / 2); */
-
   if (Game.level.levelActive) {
     image(Game.assets.roundActiveButton, start.x, start.y, start.w, start.h);
   } else if (isInsideButton(mouseX, mouseY, start)) {
@@ -46,18 +35,6 @@ function renderRoundControls() {
   } else {
     image(Game.assets.startRoundButton, start.x, start.y, start.w, start.h);
   }
-
-  /* fill(Game.autoStartLevel ? '#ef5350' : '#1e88e5');
-  stroke(0);
-  strokeWeight(2);
-  rect(mode.x, mode.y, mode.w, mode.h, 6);
-
-  fill(255);
-  noStroke();
-  textSize(14);
-  text(Game.autoStartLevel ? 'Switch to Manual' : 'Switch to Auto', mode.x + mode.w / 2, mode.y + mode.h / 2);
-
-  textAlign(LEFT, BASELINE); */
 
   if (Game.autoStartLevel) {
     const img = isInsideButton(mouseX, mouseY, mode)
@@ -243,18 +220,28 @@ function syncRoundButtons() {
 
 function renderSettingIconButton() {
   const icon = Game.ui.settingIconButton;
-  fill(255);
-  stroke(0);
-  strokeWeight(2);
-  rect(icon.x, icon.y, icon.w, icon.h, 6);
-  image(Game.assets.settingIcon, icon.x, icon.y, icon.w, icon.h);
+  if (isInsideButton(mouseX, mouseY, icon)) {
+    image(Game.assets.settingsButtonHover, icon.x, icon.y, icon.w, icon.h);
+  } else {
+    image(Game.assets.settingsButton, icon.x, icon.y, icon.w, icon.h);
+  }
 }
 
 function renderSpeedUpButton() {
   const icon = Game.ui.speedUpButton;
-  fill(255);
-  stroke(0);
-  strokeWeight(2);
-  rect(icon.x, icon.y, icon.w, icon.h, 6);
-  image(Game.assets.twoxicon, icon.x, icon.y, icon.w, icon.h);
+  if (!Game.spedUp && Game.level && Game.level.levelActive) {
+    if (isInsideButton(mouseX, mouseY, icon)) {
+      image(Game.assets.speedUpButtonHover, icon.x, icon.y, icon.w, icon.h);
+    } else {
+      image(Game.assets.speedUpButton, icon.x, icon.y, icon.w, icon.h);
+    }
+  } else if (Game.level && Game.level.levelActive) {
+    if (isInsideButton(mouseX, mouseY, icon)) {
+      image(Game.assets.speedDownButtonHover, icon.x, icon.y, icon.w, icon.h);
+    } else {
+      image(Game.assets.speedDownButton, icon.x, icon.y, icon.w, icon.h);
+    }
+  } else {
+    image(Game.assets.speedUpButtonInactive, icon.x, icon.y, icon.w, icon.h);
+  }
 }

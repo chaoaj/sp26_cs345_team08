@@ -7,6 +7,8 @@ function preload() {
   Game.assets.archerTower = loadImage('assets/archerIcon.png');
   Game.assets.knightTower = loadImage('assets/knightIcon.png');
   Game.assets.wizardTower = loadImage('assets/wizardIcon.png');
+  Game.assets.archerSprite = loadImage('assets/archer_big.png');
+  Game.assets.knightSprite = loadImage('assets/knight_big.png');
   Game.assets.wizardSprite = loadImage('assets/wizard_big.png');
   Game.assets.trash = loadImage('assets/trashIcon.png');
   Game.assets.startbutton = loadImage('assets/CastleRush Start Placeholder.png');
@@ -26,6 +28,13 @@ function preload() {
   Game.assets.switchAutoButtonHover = loadImage('assets/switch_auto_hover_big.png');
   Game.assets.switchManualButton = loadImage('assets/switch_manual_big.png');
   Game.assets.switchManualButtonHover = loadImage('assets/switch_manual_hover_big.png');
+  Game.assets.settingsButton = loadImage('assets/settings_button.png');
+  Game.assets.settingsButtonHover = loadImage('assets/settings_button_hover.png');
+  Game.assets.speedUpButton = loadImage('assets/speed_up_button.png');
+  Game.assets.speedUpButtonHover = loadImage('assets/speed_up_button_hover.png');
+  Game.assets.speedUpButtonInactive = loadImage('assets/speed_up_button_inactive.png');
+  Game.assets.speedDownButton = loadImage('assets/speed_down_button.png');
+  Game.assets.speedDownButtonHover = loadImage('assets/speed_down_button_hover.png');
   Game.assets.music                   = loadSound('assets/music.mp3');
   Game.assets.enemyHit = loadSound('assets/swordsound.mp3');
   Game.assets.startMenu = loadImage('assets/Start menu2.jpg');

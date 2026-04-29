@@ -1,5 +1,5 @@
 class Enemy {
-  constructor(health, damage, speed, path, coolDown) {
+  constructor(health, damage, speed, path, coolDown, type) {
     this.path = path;
     this.pos = path[0].copy();
     this.targetPos = 1;
@@ -7,6 +7,7 @@ class Enemy {
     this.health = health;
     this.damage = damage;
 	this.coolDown = 0;
+	this.type = type
   }
 
   speedUp() {
@@ -42,8 +43,22 @@ class Enemy {
 }
 
   render() {
-    fill(255, 0, 0);
-    ellipse(this.pos.x, this.pos.y, 40);
+	if(this.type == 'basic'){
+		fill(255, 0, 0);
+    	ellipse(this.pos.x, this.pos.y, 40);
+	}
+	else if(this.type == "berserker"){
+		fill(255, 213, 0);
+    	ellipse(this.pos.x, this.pos.y, 40);
+	}
+	else if(this.type == "brute"){
+		fill(43, 200, 100);
+    	ellipse(this.pos.x, this.pos.y, 40);
+	}
+	else if(this.type == 'boss'){
+		fill(0, 0, 0);
+		ellipse(this.pos.x, this.pos.y, 60);
+	}
 
     let squareSize = 7;
     let gap = 2;

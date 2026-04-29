@@ -31,7 +31,14 @@ window.Game = {
     switchToManualButtonHover: null,
     switchToAutoButton: null,
     switchToAutoButtonHover: null,
-	enemyHit: null,
+    settingsButton: null,
+    settingsButtonHover: null,
+    speedUpButton: null,
+    speedUpButtonHover: null,
+    speedUpButtonInactive: null,
+    speedDownButton: null,
+    speedDownButtonHover: null,
+	  enemyHit: null,
   },
   ui: {
     towerButtons: [
@@ -46,8 +53,8 @@ window.Game = {
     trashButton: { x: 1375, y: 600, w: 100, h: 100 },
     startRoundButton: { x: 1320, y: 740, w: 170, h: 38 }, // 170, 34 (original values, changed for image buttons)
     modeToggleButton: { x: 1320, y: 782, w: 170, h: 38 }, // 170, 34 (original values, changed for image buttons)
-    settingIconButton: { x: 1495, y: 740, w: 34, h: 34 },
-    speedUpButton:     { x: 1495, y: 785, w: 34, h: 34 },
+    settingIconButton: { x: 1495, y: 740, w: 38, h: 38 },
+    speedUpButton:     { x: 1495, y: 782  , w: 38, h: 38 },
     autoStartButton: null,
     startLevelButton: null,
   },
