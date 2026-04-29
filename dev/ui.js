@@ -171,13 +171,13 @@ function renderSelectedTowerPanel() {
   //upgrade button
   for (let button of Game.ui.upgradeButtons) {
     if (button.type == 1) {
-      fill(0, 0, 255);
+      fill(255, 0, 0);
       rect(button.x, button.y, button.w, button.h);
       fill(0);
       text("Damage + 1", 1100, 645);
     }
     if (button.type == 2) {
-      fill(255, 0, 0);
+      fill(0, 0, 255);
       rect(button.x, button.y, button.w, button.h);
       fill(0);
       text("Range + 25", 1100, 710);
@@ -243,5 +243,24 @@ function renderSpeedUpButton() {
     }
   } else {
     image(Game.assets.speedUpButtonInactive, icon.x, icon.y, icon.w, icon.h);
+  }
+}
+
+function renderTowerUpgrade() {
+  for (let tower of Game.towers) {
+
+    if (tower.upgradeType === 1) {
+      noFill();
+      stroke(255, 0, 0); // red for damage
+      strokeWeight(3);
+      circle(tower.x, tower.y, 25);
+    }
+
+    if (tower.upgradeType === 2) {
+      noFill();
+      stroke(0, 0, 255); //blue for range
+      strokeWeight(3);
+      circle(tower.x, tower.y, 25);
+    }
   }
 }

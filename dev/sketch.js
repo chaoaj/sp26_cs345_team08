@@ -81,13 +81,15 @@ function draw() {
     renderPath(Game.path);
     updateRoundState();
     updateAndRenderEnemies();
+    renderTowerUpgrade();
+    renderSelectedTowerPanel(); 
     updateAndRenderTowers();
 
     renderHud();
     renderSidebar();
     renderRoundControls();
     renderTowerButtons();
-    renderSelectedTowerPanel();
+    
     renderDraggingTowerPreview();
     renderCastle();
     drawSettingsMenu();
