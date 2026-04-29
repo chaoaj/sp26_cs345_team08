@@ -231,15 +231,15 @@ function renderSpeedUpButton() {
   const icon = Game.ui.speedUpButton;
   if (!Game.spedUp && Game.level && Game.level.levelActive) {
     if (isInsideButton(mouseX, mouseY, icon)) {
-      image(Game.assets.speedUpButtonHover, icon.x, icon.y, icon.w, icon.h);
-    } else {
-      image(Game.assets.speedUpButton, icon.x, icon.y, icon.w, icon.h);
-    }
-  } else if (Game.level && Game.level.levelActive) {
-    if (isInsideButton(mouseX, mouseY, icon)) {
       image(Game.assets.speedDownButtonHover, icon.x, icon.y, icon.w, icon.h);
     } else {
       image(Game.assets.speedDownButton, icon.x, icon.y, icon.w, icon.h);
+    }
+  } else if (Game.level && Game.level.levelActive) {
+    if (isInsideButton(mouseX, mouseY, icon)) {
+      image(Game.assets.speedUpButtonHover, icon.x, icon.y, icon.w, icon.h);
+    } else {
+      image(Game.assets.speedUpButton, icon.x, icon.y, icon.w, icon.h);
     }
   } else {
     image(Game.assets.speedUpButtonInactive, icon.x, icon.y, icon.w, icon.h);
