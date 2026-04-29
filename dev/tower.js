@@ -195,8 +195,9 @@ class Tower {
       return false;
     }
 
-    // Use the current target direction and a simple frame counter for animation.
-    const frameCol = floor(frameCount / this.sprite.animationRate) % this.sprite.frameCols;
+    const isAttacking = this.targetEnemy !== null;
+    const animationFrame = floor(frameCount / this.sprite.animationRate);
+    const frameCol = isAttacking ? animationFrame % this.sprite.frameCols : 0;
     const srcX = frameCol * this.sprite.frameWidth;
     const srcY = this.facingRow * this.sprite.frameHeight;
 

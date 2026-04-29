@@ -7,6 +7,8 @@ function preload() {
   Game.assets.archerTower = loadImage('assets/archerIcon.png');
   Game.assets.knightTower = loadImage('assets/knightIcon.png');
   Game.assets.wizardTower = loadImage('assets/wizardIcon.png');
+  Game.assets.archerSprite = loadImage('assets/archer_big.png');
+  Game.assets.knightSprite = loadImage('assets/knight_big.png');
   Game.assets.wizardSprite = loadImage('assets/wizard_big.png');
   Game.assets.trash = loadImage('assets/trashIcon.png');
   Game.assets.startbutton = loadImage('assets/CastleRush Start Placeholder.png');
