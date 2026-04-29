@@ -169,17 +169,17 @@ function renderSelectedTowerPanel() {
 
   fill(255);
   stroke(0);
-  rect(1025, 250, 270, 300, 10);
+  rect(1025, 500, 270, 300, 10);
+  //rect(1025, 50, 270, 300, 10);
 
   fill(0);
   noStroke();
   textSize(18);
-  text('Tower Info', 1035, 330);
-  text('Type: ' + (Game.selectedTower.towerName || 'Tower'), 1035, 345);
-  text('Damage: ' + Game.selectedTower.damage, 1035, 360);
-  text('Range: ' + Game.selectedTower.attackRange, 1035, 390);
+  text((Game.selectedTower.towerName || 'Tower'), 1035, 525);
+  text('Damage: ' + Game.selectedTower.damage, 1035, 550);
+  text('Range: ' + Game.selectedTower.attackRange, 1035, 575);
   if (Game.selectedTower.splashRadius) {
-    text('AoE: ' + Game.selectedTower.splashRadius, 1035, 420);
+    text('AoE: ' + Game.selectedTower.splashRadius, 1035, 600);
   }
 
   noFill();
@@ -190,6 +190,22 @@ function renderSelectedTowerPanel() {
   noStroke();
   rect(Game.ui.trashButton.x, Game.ui.trashButton.y, Game.ui.trashButton.w, Game.ui.trashButton.h); //trash
   image(Game.assets.trash, 1386, 600, 79, 100);
+
+  //upgrade button
+  for (let button of Game.ui.upgradeButtons) {
+    if (button.type == 1) {
+      fill(0, 0, 255);
+      rect(button.x, button.y, button.w, button.h);
+      fill(0);
+      text("Damage + 1", 1100, 645);
+    }
+    if (button.type == 2) {
+      fill(255, 0, 0);
+      rect(button.x, button.y, button.w, button.h);
+      fill(0);
+      text("Range + 25", 1100, 710);
+    }
+  }
 }
 
 function renderDraggingTowerPreview() {
