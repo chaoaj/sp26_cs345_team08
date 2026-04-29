@@ -5,6 +5,7 @@ class Enemy {
     this.targetPos = 1;
     this.speed = speed;
     this.health = health;
+    this.initialHealth = health;
     this.damage = damage;
 	this.coolDown = 0;
 	this.type = type
@@ -43,22 +44,22 @@ class Enemy {
 }
 
   render() {
-	if(this.type == 'basic'){
-		fill(255, 0, 0);
-    	ellipse(this.pos.x, this.pos.y, 40);
-	}
-	else if(this.type == "berserker"){
-		fill(255, 213, 0);
-    	ellipse(this.pos.x, this.pos.y, 40);
-	}
-	else if(this.type == "brute"){
-		fill(43, 200, 100);
-    	ellipse(this.pos.x, this.pos.y, 40);
-	}
-	else if(this.type == 'boss'){
-		fill(0, 0, 0);
-		ellipse(this.pos.x, this.pos.y, 60);
-	}
+    if (this.type == 'basic') {
+      fill(255, 0, 0);
+      ellipse(this.pos.x, this.pos.y, 40);
+    }
+    else if (this.type == "berserker") {
+      fill(255, 213, 0);
+      ellipse(this.pos.x, this.pos.y, 40);
+    }
+    else if (this.type == "brute") {
+      fill(43, 200, 100);
+      ellipse(this.pos.x, this.pos.y, 40);
+    }
+    else if (this.type == 'boss') {
+      fill(0, 0, 0);
+      ellipse(this.pos.x, this.pos.y, 60);
+    }
 
     let squareSize = 7;
     let gap = 2;
@@ -66,7 +67,7 @@ class Enemy {
     let healthX = this.pos.x - totalWidth / 2;
     let healthY = this.pos.y - 30;
 
-    for (let i = 0; i < 4; i++) {
+    /* for (let i = 0; i < 4; i++) {
       let x = healthX + i * (squareSize + gap);
       if (i < this.health) {
         fill(0, 255, 0);
@@ -76,6 +77,27 @@ class Enemy {
       stroke(0);
       strokeWeight(1);
       rect(x, healthY, squareSize, squareSize);
-    }
+    } */
+
+    let barWidth = 40;
+    let barHeight = 7;
+    let barOffset = -30;
+
+    // Outer Healthbar
+    image(
+      Game.assets.healthbarOuter,
+      this.pos.x - barWidth/2,
+      this.pos.y + barOffset,
+      barWidth,
+      barHeight
+    );
+    // Inner Healthbar
+    image(
+      Game.assets.healthbarInner,
+      this.pos.x - barWidth/2,
+      this.pos.y + barOffset,
+      barWidth * (this.health / this.initialHealth),
+      barHeight
+    );
   }
 }

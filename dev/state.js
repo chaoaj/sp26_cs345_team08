@@ -39,6 +39,8 @@ window.Game = {
     speedDownButton: null,
     speedDownButtonHover: null,
 	  enemyHit: null,
+    healthbarOuter: null,
+    healthbarInner: null,
   },
   ui: {
     towerButtons: [
