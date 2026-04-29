@@ -4,7 +4,7 @@ let bg;
 function preload() {
   Game.assets.castle = loadImage('assets/Castle.png');
   Game.assets.logo = loadImage('assets/high-resolution-color-logo.png');
-  Game.assets.archerTower = loadImage('assets/Castle Rush tower 1 placeholder.png');
+  Game.assets.archerTower = loadImage('assets/archerIcon.png');
   Game.assets.knightTower = loadImage('assets/knightIcon.png');
   Game.assets.wizardTower = loadImage('assets/wizardIcon.png');
   Game.assets.wizardSprite = loadImage('assets/wizard_big.png');
