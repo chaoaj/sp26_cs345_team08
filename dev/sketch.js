@@ -28,6 +28,7 @@ function preload() {
   Game.assets.switchManualButtonHover = loadImage('assets/switch_manual_hover_big.png');
   Game.assets.music                   = loadSound('assets/music.mp3');
   Game.assets.enemyHit = loadSound('assets/swordsound.mp3');
+  Game.assets.startMenu = loadImage('assets/Start menu2.jpg');
 }
 
 function setup() {
