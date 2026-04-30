@@ -57,6 +57,26 @@ class Enemy {
       drawHeight: 56,
     };
 	}
+	else if (type == 'berserker'){
+	  return {
+      assetKey: 'berserkerGoblinSprite',
+      frameWidth: 128,
+      frameHeight: 128,
+      frameCols: 4,
+      frameRows: 4,
+      animationRate: 10,
+      directional: true,
+      rowByDirection: {
+        down: 0,
+        left: 1,
+        right: 2,
+        up: 3,
+      },
+      defaultRow: 0,
+      drawWidth: 56,
+      drawHeight: 56,
+    };
+	}
 	return null;
   }
 
@@ -65,6 +85,7 @@ class Enemy {
   }
 
   slowDown() {
+	console.log("hello")
     this.speed = this.speed / 5;
   }
 

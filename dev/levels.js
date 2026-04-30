@@ -11,7 +11,7 @@ class Levels {
 	//each row in this array corresponds to a level.
 	//each row contains the number of enemies of a particular type to spawn index 0 = basic unit, index 1 = fast unit, index 2 = slow tank
 	this.numOfEnemiesPerRound = [
-		[0,0,5], [10,0,0],
+		[5,0,0], [10,0,0],
 		[15,0,0], [10,3,0],
 		[10,8,0], [15,10,0],
 		[15,10,5], [5,15,10],
@@ -108,11 +108,16 @@ class Levels {
 			}
 		}
   }
+  if(Game.spedUp){
+	for(let enemy of enemies){
+			enemy.speedUp()
+		}
+  }
   return enemies.sort(() => Math.random() - 0.5);
 }
-  speedUp(){
-	for(let enemy in this.waveEnemies){
-		enemy.speed *=2;
-	}
-  }
+//   speedUp(){
+// 	for(let enemy in this.waveEnemies){
+// 		enemy.speed *=2;
+// 	}
+//   }
 }
