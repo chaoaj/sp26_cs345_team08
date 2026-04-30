@@ -11,13 +11,13 @@ class Levels {
 	//each row in this array corresponds to a level.
 	//each row contains the number of enemies of a particular type to spawn index 0 = basic unit, index 1 = fast unit, index 2 = slow tank
 	this.numOfEnemiesPerRound = [
-		[5,0,0], [10,0,0],
+		[0,0,5], [10,0,0],
 		[15,0,0], [10,3,0],
 		[10,8,0], [15,10,0],
 		[15,10,5], [5,15,10],
 		[0,20,15], [10,10,10],
 		[30,0,0], [0,30,0],
-		[0,0,30], [0,0,0],
+		[0,0,30], [40,0,5],
 		[30,10,0], [30,10,5],
 		[30,10,10], [30,15,15],
 		[30,30,30], [0,0,0],

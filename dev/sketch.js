@@ -11,6 +11,7 @@ function preload() {
   Game.assets.knightSprite = loadImage('assets/knight_big.png');
   Game.assets.wizardSprite = loadImage('assets/wizard_big.png');
   Game.assets.gruntGoblinSprite = loadImage('assets/gruntGoblin-export.png');
+  Game.assets.bruteGoblinSprite = loadImage('assets/brute_big.png')
   Game.assets.trash = loadImage('assets/trashIcon.png');
   Game.assets.startbutton = loadImage('assets/CastleRush Start Placeholder.png');
   Game.assets.settingbutton = loadImage('assets/CastleRush Settings Placeholder.png');
