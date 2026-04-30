@@ -35,10 +35,30 @@ class OrbProjectile {
   render() {
     if (!this.active) return;
 
-    stroke(0);
-    strokeWeight(2);
-    fill(255, 255, 120);
-    circle(this.pos.x, this.pos.y, this.radius * 2);
+    // Use sprite if available, otherwise draw arrow-like projectile
+    if (Game.assets.arrowProjectile) {
+      push();
+      imageMode(CENTER);
+      image(Game.assets.arrowProjectile, this.pos.x, this.pos.y, this.radius * 2.5, this.radius * 2.5);
+      pop();
+    } else {
+      // Fallback to arrow-like shape
+      push();
+      translate(this.pos.x, this.pos.y);
+      // Calculate direction to target for rotation
+      if (this.targetEnemy) {
+        const direction = p5.Vector.sub(this.targetPos, this.pos);
+        const angle = atan2(direction.y, direction.x);
+        rotate(angle);
+      }
+      
+      // Draw arrow
+      fill(255, 200, 0);
+      stroke(139, 100, 0);
+      strokeWeight(1);
+      triangle(-this.radius, -this.radius/2, -this.radius, this.radius/2, this.radius, 0);
+      pop();
+    }
   }
 }
 
@@ -83,9 +103,28 @@ class SplashOrbProjectile extends OrbProjectile {
   render() {
     if (!this.active) return;
 
-    stroke(0);
-    strokeWeight(2);
-    fill(130, 180, 255);
-    circle(this.pos.x, this.pos.y, this.radius * 2);
+    // Use sprite if available, otherwise draw explosion-like projectile
+    if (Game.assets.explosionProjectile) {
+      push();
+      imageMode(CENTER);
+      image(Game.assets.explosionProjectile, this.pos.x, this.pos.y, this.radius * 3, this.radius * 3);
+      pop();
+    } else {
+      // Fallback to fireball-like shape with glow effect
+      push();
+      // Glow effect
+      noStroke();
+      fill(255, 100, 0, 50);
+      circle(this.pos.x, this.pos.y, this.radius * 4);
+      fill(255, 150, 0, 100);
+      circle(this.pos.x, this.pos.y, this.radius * 2.5);
+      
+      // Main fireball
+      fill(255, 200, 0);
+      stroke(139, 60, 0);
+      strokeWeight(1.5);
+      circle(this.pos.x, this.pos.y, this.radius * 2);
+      pop();
+    }
   }
 }
