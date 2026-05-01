@@ -21,21 +21,12 @@ function renderRoundControls() {
   const start = Game.ui.startRoundButton;
   const mode = Game.ui.modeToggleButton;
 
-  fill(30, 30, 30);
+  fill(35, 30, 30);
   noStroke();
-  textSize(14);
+  textSize(20);
+  textStyle(BOLD);
   text('Round Mode: ' + (Game.autoStartLevel ? 'Auto' : 'Manual'), 1320, 730);
-
-  /* fill(Game.level.levelActive ? '#6f6f6f' : '#4caf50');
-  stroke(0);
-  strokeWeight(2);
-  rect(start.x, start.y, start.w, start.h, 6); */
-
-  /* fill(255);
-  noStroke();
-  textSize(16);
-  textAlign(CENTER, CENTER);
-  text(Game.level.levelActive ? 'Round Active' : 'Start Round', start.x + start.w / 2, start.y + start.h / 2); */
+  textStyle(NORMAL);
 
   if (Game.level.levelActive) {
     image(Game.assets.roundActiveButton, start.x, start.y, start.w, start.h);
@@ -44,18 +35,6 @@ function renderRoundControls() {
   } else {
     image(Game.assets.startRoundButton, start.x, start.y, start.w, start.h);
   }
-
-  /* fill(Game.autoStartLevel ? '#ef5350' : '#1e88e5');
-  stroke(0);
-  strokeWeight(2);
-  rect(mode.x, mode.y, mode.w, mode.h, 6);
-
-  fill(255);
-  noStroke();
-  textSize(14);
-  text(Game.autoStartLevel ? 'Switch to Manual' : 'Switch to Auto', mode.x + mode.w / 2, mode.y + mode.h / 2);
-
-  textAlign(LEFT, BASELINE); */
 
   if (Game.autoStartLevel) {
     const img = isInsideButton(mouseX, mouseY, mode)
@@ -140,8 +119,8 @@ function renderTowerButtons() {
       stroke(255, 200, 0);
       strokeWeight(2);
       const info = buttonInfo[button.type];
-      const tooltipHeight = info.aoe ? 120 : 100;
-      rect(button.x - 160, button.y, 150, tooltipHeight, 8);
+      const tooltipHeight = info.aoe ? 150 : 125;
+      rect(button.x - 160, button.y, 140, tooltipHeight, 8);
 
     // Tooltip text
       fill(255);
@@ -167,17 +146,17 @@ function renderSelectedTowerPanel() {
 
   fill(255);
   stroke(0);
-  rect(1025, 250, 270, 300, 10);
+  rect(1025, 500, 270, 300, 10);
+  //rect(1025, 50, 270, 300, 10);
 
   fill(0);
   noStroke();
   textSize(18);
-  text('Tower Info', 1035, 330);
-  text('Type: ' + (Game.selectedTower.towerName || 'Tower'), 1035, 345);
-  text('Damage: ' + Game.selectedTower.damage, 1035, 360);
-  text('Range: ' + Game.selectedTower.attackRange, 1035, 390);
+  text((Game.selectedTower.towerName || 'Tower'), 1035, 525);
+  text('Damage: ' + Game.selectedTower.damage, 1035, 550);
+  text('Range: ' + Game.selectedTower.attackRange, 1035, 575);
   if (Game.selectedTower.splashRadius) {
-    text('AoE: ' + Game.selectedTower.splashRadius, 1035, 420);
+    text('AoE: ' + Game.selectedTower.splashRadius, 1035, 600);
   }
 
   noFill();
@@ -188,6 +167,22 @@ function renderSelectedTowerPanel() {
   noStroke();
   rect(Game.ui.trashButton.x, Game.ui.trashButton.y, Game.ui.trashButton.w, Game.ui.trashButton.h); //trash
   image(Game.assets.trash, 1386, 600, 79, 100);
+
+  //upgrade button
+  for (let button of Game.ui.upgradeButtons) {
+    if (button.type == 1) {
+      fill(255, 0, 0);
+      rect(button.x, button.y, button.w, button.h);
+      fill(0);
+      text("Damage + 1", 1100, 645);
+    }
+    if (button.type == 2) {
+      fill(0, 0, 255);
+      rect(button.x, button.y, button.w, button.h);
+      fill(0);
+      text("Range + 25", 1100, 710);
+    }
+  }
 }
 
 function renderDraggingTowerPreview() {
@@ -225,18 +220,47 @@ function syncRoundButtons() {
 
 function renderSettingIconButton() {
   const icon = Game.ui.settingIconButton;
-  fill(255);
-  stroke(0);
-  strokeWeight(2);
-  rect(icon.x, icon.y, icon.w, icon.h, 6);
-  image(Game.assets.settingIcon, icon.x, icon.y, icon.w, icon.h);
+  if (isInsideButton(mouseX, mouseY, icon)) {
+    image(Game.assets.settingsButtonHover, icon.x, icon.y, icon.w, icon.h);
+  } else {
+    image(Game.assets.settingsButton, icon.x, icon.y, icon.w, icon.h);
+  }
 }
 
 function renderSpeedUpButton() {
   const icon = Game.ui.speedUpButton;
-  fill(255);
-  stroke(0);
-  strokeWeight(2);
-  rect(icon.x, icon.y, icon.w, icon.h, 6);
-  image(Game.assets.twoxicon, icon.x, icon.y, icon.w, icon.h);
+  if (!Game.spedUp && Game.level && Game.level.levelActive) {
+    if (isInsideButton(mouseX, mouseY, icon)) {
+      image(Game.assets.speedDownButtonHover, icon.x, icon.y, icon.w, icon.h);
+    } else {
+      image(Game.assets.speedDownButton, icon.x, icon.y, icon.w, icon.h);
+    }
+  } else if (Game.level && Game.level.levelActive) {
+    if (isInsideButton(mouseX, mouseY, icon)) {
+      image(Game.assets.speedUpButtonHover, icon.x, icon.y, icon.w, icon.h);
+    } else {
+      image(Game.assets.speedUpButton, icon.x, icon.y, icon.w, icon.h);
+    }
+  } else {
+    image(Game.assets.speedUpButtonInactive, icon.x, icon.y, icon.w, icon.h);
+  }
+}
+
+function renderTowerUpgrade() {
+  for (let tower of Game.towers) {
+
+    if (tower.upgradeType === 1) {
+      noFill();
+      stroke(255, 0, 0); // red for damage
+      strokeWeight(3);
+      circle(tower.x, tower.y, 25);
+    }
+
+    if (tower.upgradeType === 2) {
+      noFill();
+      stroke(0, 0, 255); //blue for range
+      strokeWeight(3);
+      circle(tower.x, tower.y, 25);
+    }
+  }
 }
