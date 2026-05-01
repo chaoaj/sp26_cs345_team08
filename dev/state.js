@@ -62,3 +62,6 @@ window.Game = {
   },
   level: null,
 };
+function changeLevel(){
+	Game.level.currentLevel = 20;
+}
