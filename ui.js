@@ -144,6 +144,17 @@ function renderTowerButtons() {
 function renderSelectedTowerPanel() {
   if (Game.selectedTower === null) return;
 
+
+  // draw selected tower range
+  noFill();
+  stroke(100, 200, 100, 100);
+  strokeWeight(1);
+  circle(
+    Game.selectedTower.x,
+    Game.selectedTower.y,
+    Game.selectedTower.attackRange * 2
+  );
+
   fill(255);
   stroke(0);
   rect(1025, 500, 270, 300, 10);
@@ -187,6 +198,17 @@ function renderSelectedTowerPanel() {
 
 function renderDraggingTowerPreview() {
   if (Game.draggingTowerType === null) return;
+
+
+  //show range when placing
+  noFill();
+  stroke(150, 0, 150, 100);
+  strokeWeight(1);
+
+  const config = towerConfigs[Game.draggingTowerType];
+  if (config) {
+    circle(mouseX, mouseY, config.range * 2);
+  }
 
   if (isOnPath(mouseX, mouseY, Game.path) || isOnSidebar(mouseX, mouseY)) {
     fill(255, 0, 0, 150); //red if on path
