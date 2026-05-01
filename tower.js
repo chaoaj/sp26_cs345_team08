@@ -21,7 +21,7 @@ const DEFAULT_BODY_STYLE = {
 };
 
 class Tower {
-  constructor(x, y, attackRange = 100, cooldown = 30, damage = 1, towerName = null, visualConfig = {}) {
+  constructor(x, y, attackRange = 100, cooldown = 30, damage = 1, towerName = null, visualConfig = {}, upgradeType = null) {
     this.x = x;
     this.y = y;
     this.pos = createVector(x, y);
@@ -32,6 +32,7 @@ class Tower {
     this.damage = damage;
     this.currentCooldown = 0;
     this.towerName = towerName;
+    this.upgradeType = upgradeType;
 
     this.targetEnemy = null;
     this.projectiles = [];
@@ -195,9 +196,9 @@ class Tower {
       return false;
     }
 
-    // frameCount increases every draw call. Dividing by animationRate slows
-    // the animation down, then modulo keeps the frame index inside the sheet.
-    const frameCol = floor(frameCount / this.sprite.animationRate) % this.sprite.frameCols;
+    const isAttacking = this.targetEnemy !== null;
+    const animationFrame = floor(frameCount / this.sprite.animationRate);
+    const frameCol = isAttacking ? animationFrame % this.sprite.frameCols : 0;
     const srcX = frameCol * this.sprite.frameWidth;
     const srcY = this.facingRow * this.sprite.frameHeight;
 
@@ -226,11 +227,7 @@ class Tower {
   }
 
   render() {
-    // Render order matters:
-    // 1. update facing so the sprite points toward the current target
-    // 2. draw the attack range ring
-    // 3. draw either the sprite or the fallback body
-    // 4. draw any projectiles launched by this tower
+    // Render order: update direction, draw range, then sprite/body, then projectiles.
     this.updateFacingFromTarget();
     this.renderRange();
 

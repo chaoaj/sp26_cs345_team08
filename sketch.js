@@ -2,8 +2,6 @@ let gameStart = false;
 let gameInitialized = false;
 let bg;
 function preload() {
-  // All art and sound assets are loaded once here so the game can reuse
-  // them by key later instead of reloading files during gameplay.
   Game.assets.castle = loadImage('assets/Castle.png');
   Game.assets.logo = loadImage('assets/high-resolution-color-logo.png');
   Game.assets.archerTower = loadImage('assets/archerIcon.png');
@@ -53,7 +51,7 @@ function preload() {
 function setup() {
   createCanvas(1535, 825);
   userStartAudio();  // unlock audio for browser autoplay policy
-  applyVolume();     // apply Game.volume (0.5) immediately at startup
+  applyMusicVolume();     // apply Game.volume (0.5) immediately at startup
 }
 
 function draw() {
@@ -91,13 +89,15 @@ function draw() {
     renderPath(Game.path);
     updateRoundState();
     updateAndRenderEnemies();
+    renderTowerUpgrade();
+    renderSelectedTowerPanel();
     updateAndRenderTowers();
 
     renderHud();
     renderSidebar();
     renderRoundControls();
     renderTowerButtons();
-    renderSelectedTowerPanel();
+
     renderDraggingTowerPreview();
     renderCastle();
     drawSettingsMenu();
