@@ -229,8 +229,10 @@ class Tower {
   render() {
     // Render order: update direction, draw range, then sprite/body, then projectiles.
     this.updateFacingFromTarget();
-    this.renderRange();
-
+    
+    if (Game.selectedTower === this) {
+      this.renderRange();
+    }
     if (!this.renderSprite()) {
       this.renderDefaultBody();
     }
