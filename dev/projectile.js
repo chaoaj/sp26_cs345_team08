@@ -95,7 +95,6 @@ class SplashOrbProjectile extends OrbProjectile {
       if (enemy.health <= 0) continue;
       if (dist(centerPos.x, centerPos.y, enemy.pos.x, enemy.pos.y) <= this.splashRadius) {
         enemy.health -= this.damage;
-         playSFX(Game.assets.wizardhit);
       }
     }
   }
@@ -109,6 +108,7 @@ class SplashOrbProjectile extends OrbProjectile {
       imageMode(CENTER);
       image(Game.assets.explosionProjectile, this.pos.x, this.pos.y, this.radius * 3, this.radius * 3);
       pop();
+      playSFX(Game.assets.wizardhit); //works but i need overlap
     } else {
       // Fallback to fireball-like shape with glow effect
       push();
