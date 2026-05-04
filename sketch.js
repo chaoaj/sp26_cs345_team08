@@ -46,6 +46,11 @@ function preload() {
   Game.assets.startMenu = loadImage('assets/Start menu2.jpg');
   Game.assets.healthbarOuter = loadImage('assets/healthbar_outer.png');
   Game.assets.healthbarInner = loadImage('assets/healthbar_inner.png');
+  Game.assets.coinIcon   = loadImage('assets/coin.png');
+  Game.assets.swordIcon  = loadImage('assets/swordIcon.png');
+  Game.assets.shieldIcon = loadImage('assets/sheildIcon.png');
+  Game.assets.heartIcon  = loadImage('assets/heartIcon.png');
+  Game.assets.wall      = loadImage('assets/UIWall.png');
 }
 
 function setup() {
