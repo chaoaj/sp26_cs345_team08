@@ -98,7 +98,7 @@ class Levels {
 		//add fast units to enemy array
 		else if(index === 1){
 			for(let x = 0;x<num;x++){
-				enemies.push(new Enemy(3+healthBonus, 1, 3, this.path, 10, 'berserker'))
+				enemies.push(new Enemy(3+healthBonus, 1, 2, this.path, 10, 'berserker'))
 			}
 		}
 		//add slow tank units to enemy array
