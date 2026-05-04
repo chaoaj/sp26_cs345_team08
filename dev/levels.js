@@ -83,7 +83,7 @@ class Levels {
 		healthBonus = 5;
 	}
 	if(this.currentLevel == 20){
-		enemies.push(new Enemy(200, 5, 1, this.path, 10, 'boss'))
+		enemies.push(new Enemy(1, 5, 1, this.path, 10, 'boss'))
 		return enemies;
 	}
 	for(let index = 0; index < this.numOfEnemiesPerRound[levelIndex].length;index++){
