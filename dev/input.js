@@ -57,6 +57,7 @@ function mousePressed() {
     if (index !== -1) {
       Game.gold += 3;
       Game.towers.splice(index, 1);
+	  gameStats.towersSold+=1;
       
     }
     Game.selectedTower = null;
@@ -87,6 +88,7 @@ function mousePressed() {
             Game.selectedTower.attackRange += 25;
             Game.selectedTower.upgradeType = 2;
           }
+
         }
         if (Game.selectedTower instanceof StoicKnight) {
 
@@ -100,6 +102,7 @@ function mousePressed() {
           }
         }
         Game.selectedTower.upgraded = true
+		gameStats.numOfUpgrades+=1;
       }
     }
   }
@@ -165,17 +168,22 @@ function mousePressed() {
 
       if (Game.draggingTowerType === 1) {
           placed = placeTower(mouseX, mouseY, ArcherTower, config.range, config.cooldown, config.damage);
+		  gameStats.archersPlaced +=1;
       }
 
       if (Game.draggingTowerType === 2) {
         placed = placeWizardTower(mouseX, mouseY, config.range, config.cooldown, config.damage, config.splashRadius);
+		gameStats.wizardsPlaced +=1;
       }
 	  if (Game.draggingTowerType === 3) {
         placed = placeStoicKnight(mouseX, mouseY, config.range, config.cooldown, config.damage, config.splashRadius);
+		gameStats.stoicKnightsPlaced+=1;
       }
 
       if (placed) {
         addGold(-config.cost);
+		gameStats.goldSpent +=config.cost;
+		gameStats.towersPlaced+=1;
       }
     }
 

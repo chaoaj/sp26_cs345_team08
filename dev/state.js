@@ -61,6 +61,7 @@ window.Game = {
     startLevelButton: null,
   },
   level: null,
+  reset: false,
 };
 function changeLevel(){
 	Game.level.currentLevel = 20;

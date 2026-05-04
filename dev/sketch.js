@@ -57,6 +57,7 @@ function setup() {
   createCanvas(1535, 825);
   userStartAudio();  // unlock audio for browser autoplay policy
   applyMusicVolume();     // apply Game.volume (0.5) immediately at startup
+
 }
 
 function draw() {
@@ -82,7 +83,9 @@ function draw() {
   if (gameStart == true) {
 
     if (!gameInitialized) {
-      Game.assets.music.play();
+	  if(!Game.reset){
+		Game.assets.music.play();
+	  }
       createPath(Game.path);
       Game.level = new Levels(Game.path);
       setupRoundButtons();

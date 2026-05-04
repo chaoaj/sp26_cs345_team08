@@ -177,7 +177,7 @@ function setSoundVolume(sound, volume) {
 }
 
 function applyMusicVolume() {
-  setSoundVolume(Game.assets.music, Game.isMuted ? 0 : Game.musicVolume);
+	setSoundVolume(Game.assets.music, Game.isMuted ? 0 : Game.musicVolume);
 }
 
 function playSFX(sound) {
