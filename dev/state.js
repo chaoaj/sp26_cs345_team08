@@ -52,6 +52,11 @@ window.Game = {
       { type: 1, x: 1035, y: 615, w: 50, h: 50},
       { type: 2, x: 1035, y: 680, w: 50, h: 50},
     ],
+    targetPriorityButtons: [
+      { mode: 'first', label: 'FIRST', x: 1035, y: 760, w: 78, h: 26 },
+      { mode: 'last', label: 'LAST', x: 1120, y: 760, w: 78, h: 26 },
+      { mode: 'strong', label: 'STRONG', x: 1205, y: 760, w: 78, h: 26 },
+    ],
     trashButton: { x: 1375, y: 600, w: 100, h: 100 },
     startRoundButton: { x: 1320, y: 740, w: 170, h: 38 }, // 170, 34 (original values, changed for image buttons)
     modeToggleButton: { x: 1320, y: 782, w: 170, h: 38 }, // 170, 34 (original values, changed for image buttons)

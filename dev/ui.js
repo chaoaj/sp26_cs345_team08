@@ -212,9 +212,25 @@ function renderSelectedTowerPanel() {
   text((Game.selectedTower.towerName || 'Tower'), 1035, 525);
   text('Damage: ' + Game.selectedTower.damage, 1035, 550);
   text('Range: ' + Game.selectedTower.attackRange, 1035, 575);
+  text('Target: ' + Game.selectedTower.targetPriority, 1035, 600);
   if (Game.selectedTower.splashRadius) {
-    text('AoE: ' + Game.selectedTower.splashRadius, 1035, 600);
+    text('AoE: ' + Game.selectedTower.splashRadius, 1035, 625);
   }
+
+  for (let button of Game.ui.targetPriorityButtons) {
+    const isSelected = Game.selectedTower.targetPriority === button.mode;
+    fill(isSelected ? color(245, 205, 70) : color(215));
+    stroke(40);
+    strokeWeight(isSelected ? 2 : 1);
+    rect(button.x, button.y, button.w, button.h, 5);
+
+    fill(0);
+    noStroke();
+    textSize(12);
+    textAlign(CENTER, CENTER);
+    text(button.label, button.x + button.w / 2, button.y + button.h / 2);
+  }
+  textAlign(LEFT, BASELINE);
 
   noFill();
   stroke(255, 255, 0);

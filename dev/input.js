@@ -62,6 +62,15 @@ function mousePressed() {
     }
     Game.selectedTower = null;
   }
+
+  if (Game.selectedTower !== null) {
+    for (let button of Game.ui.targetPriorityButtons) {
+      if (isInsideButton(mouseX, mouseY, button)) {
+        Game.selectedTower.setTargetPriority(button.mode);
+        return;
+      }
+    }
+  }
   
   //upgrade buttons
   if (Game.selectedTower !== null && Game.selectedTower.upgradeType == null) {
