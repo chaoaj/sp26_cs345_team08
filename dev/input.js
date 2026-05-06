@@ -79,22 +79,22 @@ function mousePressed() {
         if (Game.selectedTower instanceof ArcherTower) {
 
           if (button.type == 1) {
-            Game.selectedTower.damage +=1;
+            Game.selectedTower.attackRange += 50; //Longbow = damage up+ range up
+            Game.selectedTower.damage += 1;
             Game.selectedTower.upgradeType = 1;
           }
           if (button.type == 2) {
-            Game.selectedTower.attackRange += 25;
-            Game.selectedTower.upgradeType = 2;
+            Game.selectedTower.upgradeType = 2; //Piercing = hit extra enemy
           }
         }
         if (Game.selectedTower instanceof WizardTower) {
 
           if (button.type == 1) {
-            Game.selectedTower.damage +=1;
+            Game.selectedTower.damage +=1; //Burn = damage over time
             Game.selectedTower.upgradeType = 1;
           }
           if (button.type == 2) {
-            Game.selectedTower.attackRange += 25;
+            Game.selectedTower.attackRange += 25; //Slow = reduce enemy speed temporarily
             Game.selectedTower.upgradeType = 2;
           }
 
@@ -102,12 +102,12 @@ function mousePressed() {
         if (Game.selectedTower instanceof StoicKnight) {
 
           if (button.type == 1) {
-            Game.selectedTower.damage +=1;
+            Game.selectedTower.damage +=1; //Heavy Strike = damage++
             Game.selectedTower.upgradeType = 1;
           }
           if (button.type == 2) {
-            Game.selectedTower.attackRange += 25;
-            Game.selectedTower.upgradeType = 2  ;
+            Game.selectedTower.attackRange += 25; //Stun Strike = chance to freeze enemy briefly
+            Game.selectedTower.upgradeType = 2  ; 
           }
         }
         Game.selectedTower.upgraded = true

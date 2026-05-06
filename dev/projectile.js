@@ -62,6 +62,55 @@ class OrbProjectile {
   }
 }
 
+class PiercingProjectile extends OrbProjectile {
+  constructor(x, y, targetEnemy, damage, speed = 6, pos=targetEnemy.pos) {
+    super(x, y, targetEnemy, damage, speed,pos);
+    this.radius = 6;
+    this.active = true;
+	this.targetPos = pos
+  }
+  update() {
+    if (!this.active || !this.targetEnemy) return;
+
+    if (this.targetEnemy.health <= 0) {
+      this.active = false;
+      return;
+    }
+
+
+    const toTarget = p5.Vector.sub(this.targetPos, this.pos);
+    const distanceToTarget = toTarget.mag();
+
+    if (distanceToTarget <= this.speed + this.radius + 20) {
+      this.targetEnemy.health -= this.damage;
+      let secondTarget = null;
+      for (let enemy of Game.enemies) { //looks through all enemies to see if there is one closeby
+        if (enemy === this.targetEnemy) {
+          continue;
+        }
+        if (enemy.health <= 0) {
+          continue;
+        }
+        let d = dist(this.targetEnemy.pos.x, this.targetEnemy.pos.y, enemy.pos.x, enemy.pos.y);
+        if (d < 40) {
+          secondTarget = enemy;
+          break;
+        }
+      }
+      playSFX(Game.assets.archerhit);
+      if (secondTarget !== null) { //hits second enemy
+        secondTarget.health -= this.damage
+        playSFX(Game.assets.archerhit);
+      }
+      this.active = false;
+      return;
+    }
+
+    toTarget.setMag(this.speed);
+    this.pos.add(toTarget);
+  }
+}
+
 class SplashOrbProjectile extends OrbProjectile {
   constructor(x, y, targetEnemy, damage, speed = 5, splashRadius = 60,pos=targetEnemy.pos) {
     super(x, y, targetEnemy, damage, speed,pos);
