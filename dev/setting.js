@@ -181,6 +181,9 @@ function applyMusicVolume() {
 }
 
 function playSFX(sound) {
+  if(sound.isPlaying()){
+	return;
+  }
   if (Game.isMuted || !sound) return;
 
   // p5.SoundFile case
