@@ -41,6 +41,7 @@ window.Game = {
 	  enemyHit: null,
     healthbarOuter: null,
     healthbarInner: null,
+	input: null,
   },
   ui: {
     towerButtons: [
@@ -68,6 +69,3 @@ window.Game = {
   level: null,
   reset: false,
 };
-function changeLevel(){
-	Game.level.currentLevel = 20;
-}

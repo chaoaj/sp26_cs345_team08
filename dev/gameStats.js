@@ -8,7 +8,7 @@ const gameStats = {
 	stoicKnightsPlaced: 0,
 	towersSold: 0,
 	levelsCompleted: 0,
-	numOfUpgrades: 0
+	numOfUpgrades: 0,
 }
 function resetStats(){
 	gameStats.goldCollected= Game.gold

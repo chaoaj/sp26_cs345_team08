@@ -57,6 +57,13 @@ function setup() {
   createCanvas(1535, 825);
   userStartAudio();  // unlock audio for browser autoplay policy
   applyMusicVolume();     // apply Game.volume (0.5) immediately at startup
+  Game.input = createInput("");
+  Game.input.position(390, 20)
+  Game.input.size(60)
+  Game.input.hide()
+  Game.input.input(()=>{
+  checkInput(Game.input.value());
+  })
 
 }
 
@@ -81,7 +88,7 @@ function draw() {
   }
 
   if (gameStart == true) {
-
+	Game.input.show();
     if (!gameInitialized) {
 	  if(!Game.reset){
 		Game.assets.music.play();
@@ -130,4 +137,16 @@ function draw() {
       gameWon = true;
     }
   }
+}
+
+function checkInput(value){
+	if(value == 'gold'){
+		Game.gold = 9999;
+	}
+	else if(value == 'level'){
+		Game.level.currentLevel = 20;
+	}
+	else if(value == 'health'){
+		Game.castleHealth = 9999
+	}
 }

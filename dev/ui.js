@@ -6,7 +6,7 @@ function renderHud() {
   const padding  = 10;
   const gap      = 8;
   const colW     = 80;
-  const panelW   = padding + 4 * colW + padding;
+  const panelW   = padding + 5.5 * colW + padding;
   const panelH   = iconSize + 20;
   const UNUSED   = 0; // placeholder to avoid unused-var lint
 
@@ -41,6 +41,7 @@ function renderHud() {
     textAlign(LEFT, TOP);
     text(items[i].value, ix + iconSize + gap, iy + 4);
   }
+    text("code: ", 340, 22);
 
   // Level
   const lvl = Game.level ? Game.level.currentLevel : 1;
@@ -55,6 +56,7 @@ function renderHud() {
   textAlign(LEFT, BASELINE);
   noStroke();
 }
+
 
 function renderSidebar() {
   fill('#7c7c7c');
