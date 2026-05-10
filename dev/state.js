@@ -6,7 +6,7 @@ window.Game = {
   sfxVolume: 0.5,
   musicVolume: 0.5,
   isMuted: false,
-  gold: 5,
+  gold: 12,
   enemies: [],
   towers: [],
   castleHealth:20,
