@@ -101,29 +101,29 @@ function renderTowerButtons() {
   const buttonInfo = {
     1: {
       name: 'Archer Tower',
-      cost: 5,
+      cost: 15,
       damage: 1,
-      range: 100,
+      range: 130,
       cooldown: 30,
       attackType: 'Single Target',
     },
     2: {
       name: 'Wizard Tower',
-      cost: 10,
-      damage: 1,
-      range: 120,
+      cost: 35,
+      damage: 2,
+      range: 100,
       cooldown: 55,
       attackType: 'AoE Splash',
       aoe: 60,
     },
     3: {
       name: 'Stoic Knight',
-      cost: 8,
-      damage: 1,
-      range: 100,
-      cooldown: 55,
+      cost: 20,
+      damage: 1.5,
+      range: 50,
+      cooldown: 70,
       attackType: 'AoE Splash',
-      aoe: 100,
+      aoe: 70,
     },
   };
 
@@ -214,9 +214,8 @@ function renderSelectedTowerPanel() {
   text((Game.selectedTower.towerName || 'Tower'), 1035, 525);
   text('Damage: ' + Game.selectedTower.damage, 1035, 550);
   text('Range: ' + Game.selectedTower.attackRange, 1035, 575);
-  text('Target: ' + Game.selectedTower.targetPriority, 1035, 600);
   if (Game.selectedTower.splashRadius) {
-    text('AoE: ' + Game.selectedTower.splashRadius, 1035, 625);
+    text('AoE: ' + Game.selectedTower.splashRadius, 1035, 600);
   }
 
   for (let button of Game.ui.targetPriorityButtons) {
