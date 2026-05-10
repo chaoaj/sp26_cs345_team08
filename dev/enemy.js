@@ -77,6 +77,26 @@ class Enemy {
       drawHeight: 56,
     };
 	}
+	else if (type == 'boss'){
+	  return {
+      assetKey: 'finalBoss',
+      frameWidth: 128,
+      frameHeight: 128,
+      frameCols: 4,
+      frameRows: 4,
+      animationRate: 10,
+      directional: true,
+      rowByDirection: {
+        down: 0,
+        left: 1,
+        right: 2,
+        up: 3,
+      },
+      defaultRow: 0,
+      drawWidth: 56,
+      drawHeight: 56,
+    };
+	}
 	return null;
   }
 
@@ -184,7 +204,7 @@ class Enemy {
     }
     else if (this.type == 'boss') {
       fill(0, 0, 0);
-      ellipse(this.pos.x, this.pos.y, 60);
+      ellipse(this.pos.x, this.pos.y, 40);
     }
     else if (this.type == 'basic') {
 

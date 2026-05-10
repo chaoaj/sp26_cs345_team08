@@ -44,7 +44,7 @@ class Levels {
       enemies.push(this.waveEnemies[this.spawnIndex]);
       this.spawnIndex++;
       this.lastSpawnTime = millis();
-      this.spawnDelay = random(0, 1/Game.spawnDelayMultiplier);
+      this.spawnDelay = random(100/Game.spawnDelayMultiplier, 1500/Game.spawnDelayMultiplier);
     }
 
     // spawn enemies randomly
@@ -86,10 +86,10 @@ class Levels {
 	let levelIndex = this.currentLevel-1;
 	let healthBonus = 0;
 	if(this.currentLevel >= 10){
-		healthBonus +=15;
+		healthBonus +=10;
 	}
 	if(this.currentLevel == 20){
-		enemies.push(new Enemy(1, 5, 1, this.path, 10, 'boss'))
+		enemies.push(new Enemy(1000, 5, 1, this.path, 10, 'boss'))
 		return enemies;
 	}
 	for(let index = 0; index < this.numOfEnemiesPerRound[levelIndex].length;index++){
@@ -104,7 +104,7 @@ class Levels {
 		//add fast units to enemy array
 		else if(index === 1){
 			for(let x = 0;x<num;x++){
-				enemies.push(new Enemy(8+healthBonus, 1, 2, this.path, 10, 'berserker'))
+				enemies.push(new Enemy(6+healthBonus, 1, 2, this.path, 10, 'berserker'))
 			}
 		}
 		//add slow tank units to enemy array

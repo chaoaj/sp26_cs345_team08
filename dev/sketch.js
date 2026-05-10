@@ -51,6 +51,7 @@ function preload() {
   Game.assets.shieldIcon = loadImage('assets/sheildIcon.png');
   Game.assets.heartIcon  = loadImage('assets/heartIcon.png');
   Game.assets.wall      = loadImage('assets/UIWall.png');
+  Game.assets.finalBoss = loadImage('assets/goblinOverlord_big.png');
 }
 
 function setup() {

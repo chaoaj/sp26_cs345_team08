@@ -2,11 +2,20 @@ let gameLost = false;
 let gameWon = false;
 let previousStats = null;
 function drawLoseScreen() {
-//   background(Game.assets.startMenu)
+  Game.input.hide()
+  background(Game.assets.startMenu)
   fill(255);
   textSize(70);
   text("YOU LOSE!", 540, 100);
   textSize(30);
+  noStroke();
+  fill(20, 15, 10, 195);
+  rect(45, 130, 400, 600, 10, 10, 10, 10);
+  noStroke();
+  fill(20, 15, 10, 195);
+  rect(745, 130, 400, 600, 10, 10, 10, 10);
+  fill(255);
+  textSize(30);
 
   text("Stats from last round", 100, 200);
   if(previousStats){
@@ -36,22 +45,23 @@ function drawLoseScreen() {
   gameStats.levelsCompleted = Game.level.currentLevel-1;
   text("Levels completed: " + gameStats.levelsCompleted, 800, 470)
   text("Defenders upgraded: " + gameStats.numOfUpgrades, 800, 500)
-  text("PRESS R TO RESTART", 570, 600);
+  text("PRESS R TO RESTART", 800, 700);
 }
 
 function drawWinScreen() {
-	//background(Game.assets.startMenu)
+  Game.input.hide()
+  background(Game.assets.startMenu)
   fill(255);
   textSize(70);
   text("YOU WIN!", 500, 100);
   textSize(30);
-//   noStroke();
-//   fill(20, 15, 10, 195);
-//   rect(45, 130, 400, 600, 10, 10, 10, 10);
-//   noStroke();
-//   fill(20, 15, 10, 195);
-//   rect(745, 130, 400, 600, 10, 10, 10, 10);
-//   fill(255);
+  noStroke();
+  fill(20, 15, 10, 195);
+  rect(45, 130, 400, 600, 10, 10, 10, 10);
+  noStroke();
+  fill(20, 15, 10, 195);
+  rect(745, 130, 400, 600, 10, 10, 10, 10);
+  fill(255);
   text("Stats from last round", 100, 200);
   if(previousStats){
 	textSize(20);
@@ -80,7 +90,7 @@ function drawWinScreen() {
   gameStats.levelsCompleted = Game.level.currentLevel-1;
   text("Levels completed: " + gameStats.levelsCompleted, 800, 470)
   text("Defenders upgraded: " + gameStats.numOfUpgrades, 800, 500)
-  //text("PRESS R TO RESTART", 840, 700);
+  text("PRESS R TO RESTART", 800, 700);
 }	
 
 function resetGameState() {

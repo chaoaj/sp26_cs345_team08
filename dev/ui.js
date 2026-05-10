@@ -101,7 +101,7 @@ function renderTowerButtons() {
   const buttonInfo = {
     1: {
       name: 'Archer Tower',
-      cost: 3,
+      cost: 5,
       damage: 1,
       range: 100,
       cooldown: 30,
@@ -109,7 +109,7 @@ function renderTowerButtons() {
     },
     2: {
       name: 'Wizard Tower',
-      cost: 5,
+      cost: 10,
       damage: 1,
       range: 120,
       cooldown: 55,
@@ -118,7 +118,7 @@ function renderTowerButtons() {
     },
     3: {
       name: 'Stoic Knight',
-      cost: 5,
+      cost: 8,
       damage: 1,
       range: 100,
       cooldown: 55,
