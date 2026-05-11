@@ -55,7 +55,7 @@ function mousePressed() {
   if (isInsideButton(mouseX, mouseY, Game.ui.trashButton) && Game.selectedTower !== null){
     let index = Game.towers.indexOf(Game.selectedTower);
     if (index !== -1) {
-      Game.gold += 3;
+      Game.gold += 10;
       Game.towers.splice(index, 1);
 	  gameStats.towersSold+=1;
       

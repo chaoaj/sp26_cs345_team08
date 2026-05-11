@@ -100,7 +100,7 @@ function draw() {
       gameInitialized = true;
     }
 
-
+    renderSidebar();
     syncRoundButtons();
     renderPath(Game.path);
     updateRoundState();
@@ -110,7 +110,6 @@ function draw() {
     updateAndRenderTowers();
 
     renderHud();
-    renderSidebar();
     renderRoundControls();
     renderTowerButtons();
 

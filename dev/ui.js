@@ -239,8 +239,7 @@ function renderSelectedTowerPanel() {
   circle(Game.selectedTower.x, Game.selectedTower.y, 24);
     fill(255);
   noStroke();
-  rect(Game.ui.trashButton.x, Game.ui.trashButton.y, Game.ui.trashButton.w, Game.ui.trashButton.h); //trash
-  image(Game.assets.trash, 1386, 600, 79, 100);
+  image(Game.assets.trash, Game.ui.trashButton.x, Game.ui.trashButton.y, 79, 100);
 
   //upgrade button
   for (let button of Game.ui.upgradeButtons) {
