@@ -100,7 +100,7 @@ function resetGameState() {
   gameStart = false;
   gameInitialized = false;
   Game.castleHealth = 20;
-  Game.gold = 5;
+  Game.gold = Game.startGold;
   Game.enemies = [];
   Game.towers = [];
   Game.path = [];

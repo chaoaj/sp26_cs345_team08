@@ -23,7 +23,9 @@ class OrbProjectile {
 
     if (distanceToTarget <= this.speed + this.radius + 20) {
       this.targetEnemy.health -= this.damage;
-      playSFX(Game.assets.archerhit);
+	  if(!Game.assets.archerhit.isPlaying()){
+		playSFX(Game.assets.archerhit);
+	  }
       this.active = false;
       return;
     }
@@ -97,10 +99,8 @@ class PiercingProjectile extends OrbProjectile {
           break;
         }
       }
-      playSFX(Game.assets.archerhit);
       if (secondTarget !== null) { //hits second enemy
         secondTarget.health -= this.damage
-        playSFX(Game.assets.archerhit);
       }
       this.active = false;
       return;
@@ -177,7 +177,9 @@ class SplashOrbProjectile extends OrbProjectile {
       imageMode(CENTER);
       image(Game.assets.explosionProjectile, this.pos.x, this.pos.y, this.radius * 3, this.radius * 3);
       pop();
-      playSFX(Game.assets.wizardhit); //works but i need overlap
+	  if(!Game.assets.wizardhit.isPlaying()){
+		playSFX(Game.assets.wizardhit); //works but i need overlap
+	  }
     } else {
       // Fallback to fireball-like shape with glow effect
       push();

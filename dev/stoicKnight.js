@@ -38,6 +38,8 @@ class StoicKnight extends Tower {
 
   attack(enemy) {
 	  this.projectiles.push(new SplashOrbProjectile('Stoic Knight',this.x, this.y, enemy, this.damage, this.upgradeType, 5, this.splashRadius,this.pos));
-    playSFX(Game.assets.enemyHit);
+	if(!Game.assets.enemyHit.isPlaying()){
+		playSFX(Game.assets.enemyHit);
+	}
   }
 }

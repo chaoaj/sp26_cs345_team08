@@ -127,6 +127,7 @@ function draw() {
 
     if (Game.castleHealth <= 0) {
       gameLost = true;
+	  Game.startGold+=5;
 	  if(Game.spedUp){
 		for(let enemy of Game.level.waveEnemies){
 			enemy.slowDown()
@@ -141,6 +142,7 @@ function draw() {
 
     if (!Game.level.levelActive && Game.level.currentLevel > 20 && Game.enemies.length === 0) {
       gameWon = true;
+	  Game.startGold-=5;
     }
   }
 }
