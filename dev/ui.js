@@ -249,6 +249,10 @@ function renderSelectedTowerPanel() {
 			image(Game.assets.staff, button.x,button.y, button.w, button.h)
 			text("50% Damage increase, 25 Gold", 1100, 645);
 		}
+		else if(Game.selectedTower.towerName == 'Archer Tower'){
+			image(Game.assets.range, button.x,button.y, button.w, button.h)
+			text("100% range increase, 20 Gold", 1100, 645);
+		}
 		else{
 		text("Damage + 1", 1100, 645);
 		rect(button.x,button.y, button.w, button.h);
@@ -259,6 +263,10 @@ function renderSelectedTowerPanel() {
 	  if(Game.selectedTower.towerName == 'Wizard Tower'){
 		image(Game.assets.snowflake, button.x,button.y, button.w, button.h)
 		text("Slow enemies: 1sec, 30 Gold", 1100, 710);
+	  }
+	  else if(Game.selectedTower.towerName == 'Archer Tower'){
+		image(Game.assets.arrow, button.x,button.y, button.w, button.h)
+		text("targets two enemies, 10 Gold", 1100, 710);
 	  }
 	  else{
 		text("Range + 25", 1100, 710);

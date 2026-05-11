@@ -79,12 +79,19 @@ function mousePressed() {
         if (Game.selectedTower instanceof ArcherTower) {
 
           if (button.type == 1) {
-            Game.selectedTower.attackRange += 50; //Longbow = damage up+ range up
-            Game.selectedTower.damage += 1;
-            Game.selectedTower.upgradeType = 1;
+			if(Game.gold >= 20){
+                Game.selectedTower.attackRange *=2;
+                Game.selectedTower.upgradeType = 1;
+				Game.gold -= 20;
+			}
+
           }
           if (button.type == 2) {
-            Game.selectedTower.upgradeType = 2; //Piercing = hit extra enemy
+             //Piercing = hit extra enemy
+			if(Game.gold >= 10){
+				Game.selectedTower.upgradeType = 2;
+				Game.gold -= 10;
+			}
           }
         }
         if (Game.selectedTower instanceof WizardTower) {

@@ -54,6 +54,8 @@ function preload() {
   Game.assets.finalBoss = loadImage('assets/goblinOverlord_big.png');
   Game.assets.snowflake = loadImage('assets/snowflake.jpg');
   Game.assets.staff = loadImage('assets/staff.webp');
+  Game.assets.arrow = loadImage('assets/arrow.avif');
+  Game.assets.range = loadImage('assets/range.avif');
 }
 
 function setup() {
