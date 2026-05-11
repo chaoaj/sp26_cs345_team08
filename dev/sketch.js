@@ -56,6 +56,8 @@ function preload() {
   Game.assets.staff = loadImage('assets/staff.webp');
   Game.assets.arrow = loadImage('assets/arrow.avif');
   Game.assets.range = loadImage('assets/range.avif');
+  Game.assets.sword = loadImage('assets/swordIcon_big.png');
+  Game.assets.speed = loadImage('assets/speed.jpg');
 }
 
 function setup() {

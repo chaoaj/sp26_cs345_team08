@@ -34,7 +34,7 @@ class WizardTower extends Tower {
   attack(enemy) {
 	console.log(this.upgradeType)
 	let speed = this.spedUp ? 10 : 5;
-    this.projectiles.push(new SplashOrbProjectile(this.x, this.y, enemy, this.damage, this.upgradeType, speed, this.splashRadius));
+    this.projectiles.push(new SplashOrbProjectile('Wizard Tower', this.x, this.y, enemy, this.damage, this.upgradeType, speed, this.splashRadius));
   }
     speedUp() {
     this.maxCooldown /= 6;

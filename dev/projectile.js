@@ -112,11 +112,12 @@ class PiercingProjectile extends OrbProjectile {
 }
 
 class SplashOrbProjectile extends OrbProjectile {
-  constructor(x, y, targetEnemy, damage, upgradeType, speed = 5, splashRadius = 60,pos=targetEnemy.pos) {
+  constructor(towerType, x, y, targetEnemy, damage, upgradeType, speed = 5, splashRadius = 60,pos=targetEnemy.pos) {
     super(x, y, targetEnemy, damage, speed,pos);
     this.splashRadius = splashRadius;
     this.radius = 7;
 	this.upgradeType = upgradeType;
+	this.towerType = towerType;
   }
 
   update() {
@@ -145,14 +146,24 @@ class SplashOrbProjectile extends OrbProjectile {
       if (enemy.health <= 0) continue;
       if (dist(centerPos.x, centerPos.y, enemy.pos.x, enemy.pos.y) <= this.splashRadius) {
         enemy.health -= this.damage;
-		console.log(this.upgradeType)
-		if(this.upgradeType == 2){
-					if(!enemy.slowed){
-			enemy.speed /= 2;
-			enemy.slowed = true;
-		}
-		}
 
+		if(this.towerType == 'Wizard Tower'){
+			if(this.upgradeType == 2){
+				if(!enemy.slowed){
+					enemy.speed /= 2;
+					enemy.slowed = true;
+				}
+			}
+		}
+		else if(this.towerType == 'Stoic Knight'){
+			if(this.upgradeType == 1){
+				if(!enemy.slowed){
+					enemy.slowedDownTimer = 10;
+					enemy.speed =-1;
+					enemy.slowed = true;
+				}
+			}
+		}
       }
     }
   }

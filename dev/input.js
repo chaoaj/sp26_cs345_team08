@@ -5,7 +5,7 @@ function isInsideButton(x, y, button) {
 const towerConfigs = {
   1: { cost: 15, range: 130, cooldown: 30, damage: 1 },
   2: { cost: 35, range: 100, cooldown: 55, damage: 2, splashRadius: 60 },
-  3: { cost: 20, range: 50, cooldown: 70, damage: 1.5, splashRadius: 70 },
+  3: { cost: 20, range: 50, cooldown: 70, damage: 1.5, splashRadius: 50 },
 };
 
 function onToggleAutoStart() {
@@ -116,12 +116,17 @@ function mousePressed() {
         if (Game.selectedTower instanceof StoicKnight) {
 
           if (button.type == 1) {
-            Game.selectedTower.damage +=1; //Heavy Strike = damage++
-            Game.selectedTower.upgradeType = 1;
+			if(Game.gold >= 50){
+				Game.selectedTower.upgradeType = 1;
+				Game.gold -= 50;
+			}
           }
           if (button.type == 2) {
-            Game.selectedTower.attackRange += 25; //Stun Strike = chance to freeze enemy briefly
-            Game.selectedTower.upgradeType = 2  ; 
+			if(Game.gold >= 20){
+            	Game.selectedTower.maxCooldown /= 2; //Stun Strike = chance to freeze enemy briefly
+            	Game.selectedTower.upgradeType = 2  ; 
+				Game.gold -= 20;
+			}
           }
         }
         Game.selectedTower.upgraded = true

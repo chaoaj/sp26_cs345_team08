@@ -253,6 +253,10 @@ function renderSelectedTowerPanel() {
 			image(Game.assets.range, button.x,button.y, button.w, button.h)
 			text("100% range increase, 20 Gold", 1100, 645);
 		}
+		else if(Game.selectedTower.towerName == 'Stoic Knight'){
+			image(Game.assets.sword, button.x,button.y, button.w, button.h)
+			text("hit enemies backwards, 50 gold", 1100, 645);
+		}
 		else{
 		text("Damage + 1", 1100, 645);
 		rect(button.x,button.y, button.w, button.h);
@@ -268,6 +272,10 @@ function renderSelectedTowerPanel() {
 		image(Game.assets.arrow, button.x,button.y, button.w, button.h)
 		text("targets two enemies, 10 Gold", 1100, 710);
 	  }
+		else if(Game.selectedTower.towerName == 'Stoic Knight'){
+			image(Game.assets.speed, button.x,button.y, button.w, button.h)
+			text("hit speed increase, 20 gold", 1100, 710);
+		}
 	  else{
 		text("Range + 25", 1100, 710);
 		rect(button.x,button.y, button.w, button.h);
