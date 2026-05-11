@@ -90,12 +90,19 @@ function mousePressed() {
         if (Game.selectedTower instanceof WizardTower) {
 
           if (button.type == 1) {
-            Game.selectedTower.damage +=1; //Burn = damage over time
-            Game.selectedTower.upgradeType = 1;
+				if(Game.gold >= 25){
+            		Game.selectedTower.damage += Game.selectedTower.damage/2; //Burn = damage over time
+            		Game.selectedTower.upgradeType = 1;
+			   		Game.gold -= 25;
+				}
           }
           if (button.type == 2) {
-            Game.selectedTower.attackRange += 25; //Slow = reduce enemy speed temporarily
-            Game.selectedTower.upgradeType = 2;
+			if(Game.gold >= 30){
+				//Slow = reduce enemy speed temporarily
+               Game.selectedTower.upgradeType = 2;
+			   Game.gold -= 30;
+			}
+
           }
 
         }

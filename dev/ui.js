@@ -244,16 +244,26 @@ function renderSelectedTowerPanel() {
   //upgrade button
   for (let button of Game.ui.upgradeButtons) {
     if (button.type == 1) {
-      fill(255, 0, 0);
-      rect(button.x, button.y, button.w, button.h);
-      fill(0);
-      text("Damage + 1", 1100, 645);
+		fill(0);
+		if(Game.selectedTower.towerName == 'Wizard Tower'){
+			image(Game.assets.staff, button.x,button.y, button.w, button.h)
+			text("50% Damage increase, 25 Gold", 1100, 645);
+		}
+		else{
+		text("Damage + 1", 1100, 645);
+		rect(button.x,button.y, button.w, button.h);
+	  }
     }
     if (button.type == 2) {
-      fill(0, 0, 255);
-      rect(button.x, button.y, button.w, button.h);
-      fill(0);
-      text("Range + 25", 1100, 710);
+		fill(0);
+	  if(Game.selectedTower.towerName == 'Wizard Tower'){
+		image(Game.assets.snowflake, button.x,button.y, button.w, button.h)
+		text("Slow enemies: 1sec, 30 Gold", 1100, 710);
+	  }
+	  else{
+		text("Range + 25", 1100, 710);
+		rect(button.x,button.y, button.w, button.h);
+	  }
     }
   }
 }

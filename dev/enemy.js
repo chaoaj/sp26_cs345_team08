@@ -1,5 +1,6 @@
 class Enemy {
-  constructor(health, damage, speed, path, coolDown, type) {
+  constructor(health, damage, speed, path, coolDown, type, slowed=false, slowedDownTimer =60) {
+	this.originalSpeed = speed;
     this.path = path;
     this.pos = path[0].copy();
     this.targetPos = 1;
@@ -9,6 +10,8 @@ class Enemy {
     this.damage = damage;
     this.coolDown = 0;
     this.type = type;
+	this.slowedDownTimer =  slowedDownTimer
+	this.slowed = slowed;
 
     // Only the basic enemy uses a sprite sheet for now.
     this.sprite = this.createSpriteConfig(type);
@@ -110,6 +113,20 @@ class Enemy {
   }
 
   updatePos() {
+	if(this.slowed){
+		this.slowedDownTimer-=1;
+	}
+	if (this.slowedDownTimer <= 0){
+		this.slowed = false;
+		this.slowedDownTimer = 60;
+		if(Game.spedUp){
+			this.speed = this.originalSpeed*5;
+		}
+		else{
+			this.speed = this.originalSpeed;
+		}
+		
+	}
     if (this.targetPos >= this.path.length) return;
 
     let target = this.path[this.targetPos];

@@ -112,10 +112,11 @@ class PiercingProjectile extends OrbProjectile {
 }
 
 class SplashOrbProjectile extends OrbProjectile {
-  constructor(x, y, targetEnemy, damage, speed = 5, splashRadius = 60,pos=targetEnemy.pos) {
+  constructor(x, y, targetEnemy, damage, upgradeType, speed = 5, splashRadius = 60,pos=targetEnemy.pos) {
     super(x, y, targetEnemy, damage, speed,pos);
     this.splashRadius = splashRadius;
     this.radius = 7;
+	this.upgradeType = upgradeType;
   }
 
   update() {
@@ -144,6 +145,14 @@ class SplashOrbProjectile extends OrbProjectile {
       if (enemy.health <= 0) continue;
       if (dist(centerPos.x, centerPos.y, enemy.pos.x, enemy.pos.y) <= this.splashRadius) {
         enemy.health -= this.damage;
+		console.log(this.upgradeType)
+		if(this.upgradeType == 2){
+					if(!enemy.slowed){
+			enemy.speed /= 2;
+			enemy.slowed = true;
+		}
+		}
+
       }
     }
   }

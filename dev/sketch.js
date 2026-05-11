@@ -52,6 +52,8 @@ function preload() {
   Game.assets.heartIcon  = loadImage('assets/heartIcon.png');
   Game.assets.wall      = loadImage('assets/UIWall.png');
   Game.assets.finalBoss = loadImage('assets/goblinOverlord_big.png');
+  Game.assets.snowflake = loadImage('assets/snowflake.jpg');
+  Game.assets.staff = loadImage('assets/staff.webp');
 }
 
 function setup() {
