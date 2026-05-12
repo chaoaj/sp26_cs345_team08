@@ -1,5 +1,5 @@
 class StoicKnight extends Tower {
-  constructor(x, y, attackRange = 50, cooldown = 55, damage = 1, splashRadius = 60) {
+  constructor(x, y, attackRange = 65, cooldown = 48, damage = 1.75, splashRadius = 58) {
     super(x, y, attackRange, cooldown, damage, 'Stoic Knight', {
       rangeStyle: {
         fill: [120, 180, 255, 40],
@@ -37,6 +37,9 @@ class StoicKnight extends Tower {
   }
 
   attack(enemy) {
-	this.projectiles.push(new SplashOrbProjectile(this.x, this.y, enemy, this.damage, 5, this.splashRadius,this.pos));
+	  this.projectiles.push(new SplashOrbProjectile('Stoic Knight',this.x, this.y, enemy, this.damage, this.upgradeType, 5, this.splashRadius,this.pos));
+	if(!Game.assets.enemyHit.isPlaying()){
+		playSFX(Game.assets.enemyHit);
+	}
   }
 }

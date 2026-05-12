@@ -1,5 +1,5 @@
 class ArcherTower extends Tower {
-  constructor(x, y, attackRange = 100, cooldown = 40, damage = 1) {
+  constructor(x, y, attackRange = 130, cooldown = 25, damage = 1.5) {
     super(x, y, attackRange, cooldown, damage, 'Archer Tower', {
       rangeStyle: {
         fill: [120, 180, 255, 40],
@@ -25,5 +25,23 @@ class ArcherTower extends Tower {
         drawHeight: 52,
       },
     });
+  }
+  
+  attack(enemy) {
+    let speed = this.spedUp ? 10 : 5;
+    if (this.upgradeType === 2) { 
+      this.projectiles.push(new PiercingProjectile(this.x, this.y, enemy, this.damage, speed))
+    } else {
+      this.projectiles.push(new OrbProjectile(this.x, this.y, enemy, this.damage, speed))
+    }
+  }
+  speedUp() {
+    this.maxCooldown /= 6;
+    this.spedUp = true;
+  }
+
+  slowDown() {
+    this.spedUp = false;
+    this.maxCooldown *= 6;
   }
 }
