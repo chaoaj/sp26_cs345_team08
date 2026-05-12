@@ -41,6 +41,7 @@ function preload() {
   Game.assets.speedUpButtonInactive = loadImage('assets/speed_up_button_inactive.png');
   Game.assets.speedDownButton = loadImage('assets/speed_down_button.png');
   Game.assets.speedDownButtonHover = loadImage('assets/speed_down_button_hover.png');
+  Game.assets.startbutton = loadImage('assets/start_main_menu.png');
   Game.assets.music                   = loadSound('assets/music.mp3');
   Game.assets.enemyHit = loadSound('assets/swordsound.mp3');
   Game.assets.startMenu = loadImage('assets/Start menu2.jpg');

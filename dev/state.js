@@ -42,6 +42,7 @@ window.Game = {
 	  enemyHit: null,
     healthbarOuter: null,
     healthbarInner: null,
+    startbutton: null,
 	input: null,
   },
   ui: {
