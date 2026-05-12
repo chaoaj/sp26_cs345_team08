@@ -45,6 +45,14 @@ function preload() {
   Game.assets.startButtonHover = loadImage('assets/start_main_menu_hover.png');
   Game.assets.menuSettingsButton = loadImage('assets/settings_main_menu.png');
   Game.assets.menuSettingsButtonHover = loadImage('assets/settings_main_menu_hover.png');
+  Game.assets.settingsCloseButton = loadImage('assets/settings_close.png');
+  Game.assets.settingsCloseButtonHover = loadImage('assets/settings_close_hover.png');
+  Game.assets.settingsMuteButton = loadImage('assets/mute.png');
+  Game.assets.settingsMuteButtonHover = loadImage('assets/mute_hover.png');
+  Game.assets.settingsUnmuteButton = loadImage('assets/unmute.png');
+  Game.assets.settingsUnmuteButtonHover = loadImage('assets/unmute_hover.png');
+  Game.assets.sliderCircle = loadImage('assets/slider_circle.png');
+  Game.assets.settingsPopup = loadImage('assets/settings_popup.png');
   Game.assets.music                   = loadSound('assets/music.mp3');
   Game.assets.enemyHit = loadSound('assets/swordsound.mp3');
   Game.assets.startMenu = loadImage('assets/Start menu2.jpg');

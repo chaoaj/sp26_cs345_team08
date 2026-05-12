@@ -46,7 +46,15 @@ window.Game = {
     startButtonHover: null,
     menuSettingsButton: null,
     menuSettingsButtonHover: null,
-	input: null,
+    settingsCloseButton: null,
+    settingsCloseButtonHover: null,
+    settingsMuteButton: null,
+    settingsMuteButtonHover: null,
+    settingsUnmuteButton: null,
+    settingsUnmuteButtonHover: null,
+    sliderCircle: null,
+    settingsPopup: null,
+	  input: null,
   },
   ui: {
     towerButtons: [
