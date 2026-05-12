@@ -58,7 +58,7 @@ function mousePressed() {
       Game.gold += 10;
       Game.towers.splice(index, 1);
 	  gameStats.towersSold+=1;
-      
+
     }
     Game.selectedTower = null;
   }
@@ -71,7 +71,7 @@ function mousePressed() {
       }
     }
   }
-  
+
   //upgrade buttons
   if (Game.selectedTower !== null && Game.selectedTower.upgradeType == null) {
     for (let button of Game.ui.upgradeButtons) {
@@ -124,7 +124,7 @@ function mousePressed() {
           if (button.type == 2) {
 			if(Game.gold >= 20){
             	Game.selectedTower.maxCooldown /= 2; //Stun Strike = chance to freeze enemy briefly
-            	Game.selectedTower.upgradeType = 2  ; 
+            	Game.selectedTower.upgradeType = 2  ;
 				Game.gold -= 20;
 			}
           }
@@ -137,9 +137,10 @@ function mousePressed() {
 
   if (!gameStart) {
     // Open settings menu
+    const setting = Game.ui.menuSettingsButton;
     if (!settingsOpen &&
-        mouseX >= 200 && mouseX <= 500 &&
-        mouseY >= 490   && mouseY <= 615) {
+        mouseX >= setting.x && mouseX <= setting.x + setting.w &&
+        mouseY >= setting.y   && mouseY <= setting.y + setting.h) {
       settingsOpen = true;
       return;
     }

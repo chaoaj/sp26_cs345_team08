@@ -42,7 +42,10 @@ window.Game = {
 	  enemyHit: null,
     healthbarOuter: null,
     healthbarInner: null,
-    startbutton: null,
+    startButton: null,
+    startButtonHover: null,
+    menuSettingsButton: null,
+    menuSettingsButtonHover: null,
 	input: null,
   },
   ui: {
@@ -65,6 +68,8 @@ window.Game = {
     modeToggleButton: { x: 1320, y: 782, w: 170, h: 38 }, // 170, 34 (original values, changed for image buttons)
     settingIconButton: { x: 1495, y: 740, w: 38, h: 38 },
     speedUpButton:     { x: 1495, y: 782  , w: 38, h: 38 },
+    menuStartButton:     { x: 200, y: 350  , w: 300, h: 83 },
+    menuSettingsButton:     { x: 200, y: 450  , w: 300, h: 83 },
     autoStartButton: null,
     startLevelButton: null,
   },
