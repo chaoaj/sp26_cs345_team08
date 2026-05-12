@@ -85,22 +85,16 @@ class PiercingProjectile extends OrbProjectile {
 
     if (distanceToTarget <= this.speed + this.radius + 20) {
       this.targetEnemy.health -= this.damage;
-      let secondTarget = null;
-      for (let enemy of Game.enemies) { //looks through all enemies to see if there is one closeby
-        if (enemy === this.targetEnemy) {
-          continue;
-        }
-        if (enemy.health <= 0) {
-          continue;
-        }
+      let extraHits = 0;
+      for (let enemy of Game.enemies) {
+        if (extraHits >= 2) break;
+        if (enemy === this.targetEnemy) continue;
+        if (enemy.health <= 0) continue;
         let d = dist(this.targetEnemy.pos.x, this.targetEnemy.pos.y, enemy.pos.x, enemy.pos.y);
-        if (d < 40) {
-          secondTarget = enemy;
-          break;
+        if (d < 50) {
+          enemy.health -= this.damage;
+          extraHits++;
         }
-      }
-      if (secondTarget !== null) { //hits second enemy
-        secondTarget.health -= this.damage
       }
       this.active = false;
       return;

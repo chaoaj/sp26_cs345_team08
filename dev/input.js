@@ -3,9 +3,9 @@ function isInsideButton(x, y, button) {
 }
 
 const towerConfigs = {
-  1: { cost: 15, range: 130, cooldown: 30, damage: 1 },
+  1: { cost: 15, range: 130, cooldown: 25, damage: 1.5 },
   2: { cost: 35, range: 100, cooldown: 55, damage: 2, splashRadius: 60 },
-  3: { cost: 20, range: 50, cooldown: 70, damage: 1.5, splashRadius: 50 },
+  3: { cost: 20, range: 65, cooldown: 48, damage: 1.75, splashRadius: 58 },
 };
 
 function onToggleAutoStart() {
@@ -79,10 +79,10 @@ function mousePressed() {
         if (Game.selectedTower instanceof ArcherTower) {
 
           if (button.type == 1) {
-			if(Game.gold >= 20){
+			if(Game.gold >= 12){
                 Game.selectedTower.attackRange *=2;
                 Game.selectedTower.upgradeType = 1;
-				Game.gold -= 20;
+				Game.gold -= 12;
 			}
 
           }

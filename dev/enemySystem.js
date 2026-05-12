@@ -9,8 +9,12 @@ function updateAndRenderEnemies() {
 
     if (enemy.health <= 0) {
       if (enemy.health <= 0) {
-        addGold(1);
-		gameStats.goldCollected+=1;
+        let reward = 1;
+        if (enemy.type === 'berserker' && Game.level && Game.level.currentLevel <= 11) {
+          reward = 2;
+        }
+        addGold(reward);
+		gameStats.goldCollected+=reward;
 		gameStats.enemiesKilled+=1;
       }
       Game.enemies.splice(i, 1);

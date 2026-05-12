@@ -102,9 +102,9 @@ function renderTowerButtons() {
     1: {
       name: 'Archer Tower',
       cost: 15,
-      damage: 1,
+      damage: 1.5,
       range: 130,
-      cooldown: 30,
+      cooldown: 25,
       attackType: 'Single Target',
     },
     2: {
@@ -119,11 +119,11 @@ function renderTowerButtons() {
     3: {
       name: 'Stoic Knight',
       cost: 20,
-      damage: 1.5,
-      range: 50,
-      cooldown: 70,
+      damage: 1.75,
+      range: 65,
+      cooldown: 48,
       attackType: 'AoE Splash',
-      aoe: 70,
+      aoe: 58,
     },
   };
 
@@ -251,7 +251,7 @@ function renderSelectedTowerPanel() {
 		}
 		else if(Game.selectedTower.towerName == 'Archer Tower'){
 			image(Game.assets.range, button.x,button.y, button.w, button.h)
-			text("100% range increase, 20 Gold", 1100, 645);
+			text("100% range increase, 12 Gold", 1100, 645);
 		}
 		else if(Game.selectedTower.towerName == 'Stoic Knight'){
 			image(Game.assets.sword, button.x,button.y, button.w, button.h)
@@ -270,7 +270,7 @@ function renderSelectedTowerPanel() {
 	  }
 	  else if(Game.selectedTower.towerName == 'Archer Tower'){
 		image(Game.assets.arrow, button.x,button.y, button.w, button.h)
-		text("targets two enemies, 10 Gold", 1100, 710);
+		text("targets three enemies, 10 Gold", 1100, 710);
 	  }
 		else if(Game.selectedTower.towerName == 'Stoic Knight'){
 			image(Game.assets.speed, button.x,button.y, button.w, button.h)

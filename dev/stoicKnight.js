@@ -1,5 +1,5 @@
 class StoicKnight extends Tower {
-  constructor(x, y, attackRange = 50, cooldown = 55, damage = 1, splashRadius = 60) {
+  constructor(x, y, attackRange = 65, cooldown = 48, damage = 1.75, splashRadius = 58) {
     super(x, y, attackRange, cooldown, damage, 'Stoic Knight', {
       rangeStyle: {
         fill: [120, 180, 255, 40],

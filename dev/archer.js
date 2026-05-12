@@ -1,5 +1,5 @@
 class ArcherTower extends Tower {
-  constructor(x, y, attackRange = 100, cooldown = 40, damage = 1) {
+  constructor(x, y, attackRange = 130, cooldown = 25, damage = 1.5) {
     super(x, y, attackRange, cooldown, damage, 'Archer Tower', {
       rangeStyle: {
         fill: [120, 180, 255, 40],
