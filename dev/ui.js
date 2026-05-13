@@ -1,5 +1,5 @@
 function renderHud() {
-  // ── Shaded panel 
+  // ── Shaded panel
   const panelX   = 8;
   const panelY   = 8;
   const iconSize = 26;
@@ -62,7 +62,7 @@ function renderSidebar() {
   fill('#7c7c7c');
   // rect(1300, 0, 300, 825);
   image(Game.assets.wall,1300, 0, 300, 825);
-  image(Game.assets.logo, 1310, 10, 220, 220);
+  image(Game.assets.logo, 1310, 50, 220, 44);
 }
 
 function renderRoundControls() {

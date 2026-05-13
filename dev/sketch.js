@@ -3,7 +3,7 @@ let gameInitialized = false;
 let bg;
 function preload() {
   Game.assets.castle = loadImage('assets/Castle.png');
-  Game.assets.logo = loadImage('assets/high-resolution-color-logo.png');
+  Game.assets.logo = loadImage('assets/alt_high_res_logo.png'); //assets/high-resolution-color-logo.png
   Game.assets.archerTower = loadImage('assets/archerIcon.png');
   Game.assets.knightTower = loadImage('assets/knightIcon.png');
   Game.assets.wizardTower = loadImage('assets/wizardIcon.png');
